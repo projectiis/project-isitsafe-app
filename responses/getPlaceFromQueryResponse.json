@@ -1,0 +1,173 @@
+{
+  "status": "ok",
+  "places": [
+    {
+      "address": "Leof. Marathonos 72, Pallini 153 51, Greece",
+      "coords": {
+        "lat": 38.00365439999999,
+        "lng": 23.8799382
+      },
+      "name": "I love Souvlaki",
+      "openingHours": {
+        "open_now": false,
+        "periods": [
+          {
+            "close": {
+              "day": 2,
+              "time": "0030"
+            },
+            "open": {
+              "day": 1,
+              "time": "1130"
+            }
+          },
+          {
+            "close": {
+              "day": 3,
+              "time": "0030"
+            },
+            "open": {
+              "day": 2,
+              "time": "1130"
+            }
+          },
+          {
+            "close": {
+              "day": 4,
+              "time": "0030"
+            },
+            "open": {
+              "day": 3,
+              "time": "1130"
+            }
+          },
+          {
+            "close": {
+              "day": 5,
+              "time": "0030"
+            },
+            "open": {
+              "day": 4,
+              "time": "1130"
+            }
+          },
+          {
+            "close": {
+              "day": 6,
+              "time": "0100"
+            },
+            "open": {
+              "day": 5,
+              "time": "1130"
+            }
+          },
+          {
+            "close": {
+              "day": 0,
+              "time": "0000"
+            },
+            "open": {
+              "day": 6,
+              "time": "1130"
+            }
+          }
+        ],
+        "weekday_text": [
+          "Monday: 11:30 AM – 12:30 AM",
+          "Tuesday: 11:30 AM – 12:30 AM",
+          "Wednesday: 11:30 AM – 12:30 AM",
+          "Thursday: 11:30 AM – 12:30 AM",
+          "Friday: 11:30 AM – 1:00 AM",
+          "Saturday: 11:30 AM – 12:00 AM",
+          "Sunday: Closed"
+        ]
+      },
+      "phoneNumber": "+30 21 0603 0497",
+      "placeId": "ChIJX23aV8qboRQRwuDHqwnBIig"
+    },
+    {
+      "address": "Leof. Pentelis 5, Chalandri 152 33, Greece",
+      "coords": {
+        "lat": 38.0228658,
+        "lng": 23.8015794
+      },
+      "name": "I love Souvlaki",
+      "openingHours": {
+        "open_now": false,
+        "periods": [
+          {
+            "close": {
+              "day": 2,
+              "time": "0100"
+            },
+            "open": {
+              "day": 1,
+              "time": "1100"
+            }
+          },
+          {
+            "close": {
+              "day": 3,
+              "time": "0100"
+            },
+            "open": {
+              "day": 2,
+              "time": "1100"
+            }
+          },
+          {
+            "close": {
+              "day": 4,
+              "time": "0100"
+            },
+            "open": {
+              "day": 3,
+              "time": "1100"
+            }
+          },
+          {
+            "close": {
+              "day": 5,
+              "time": "0100"
+            },
+            "open": {
+              "day": 4,
+              "time": "1100"
+            }
+          },
+          {
+            "close": {
+              "day": 6,
+              "time": "0100"
+            },
+            "open": {
+              "day": 5,
+              "time": "1100"
+            }
+          },
+          {
+            "close": {
+              "day": 0,
+              "time": "0000"
+            },
+            "open": {
+              "day": 6,
+              "time": "1100"
+            }
+          }
+        ],
+        "weekday_text": [
+          "Monday: 11:00 AM – 1:00 AM",
+          "Tuesday: 11:00 AM – 1:00 AM",
+          "Wednesday: 11:00 AM – 1:00 AM",
+          "Thursday: 11:00 AM – 1:00 AM",
+          "Friday: 11:00 AM – 1:00 AM",
+          "Saturday: 11:00 AM – 12:00 AM",
+          "Sunday: Closed"
+        ]
+      },
+      "phoneNumber": "+30 21 0682 2221",
+      "placeId": "ChIJf8Eyh_mYoRQRNsyWKYo83MA"
+    }
+  ]
+}

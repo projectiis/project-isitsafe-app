@@ -1,0 +1,1902 @@
+{
+  "status": "ok",
+  "places": [
+    {
+      "address": "Leof. Marathonos 56, Pallini 153 51, Greece",
+      "coords": {
+        "lat": 38.0036429,
+        "lng": 23.8780972
+      },
+      "name": "Alpha Bank Παλλήνη",
+      "openingHours": {
+        "open_now": true,
+        "periods": [
+          {
+            "close": {
+              "day": 1,
+              "time": "1400"
+            },
+            "open": {
+              "day": 1,
+              "time": "0800"
+            }
+          },
+          {
+            "close": {
+              "day": 2,
+              "time": "1400"
+            },
+            "open": {
+              "day": 2,
+              "time": "0800"
+            }
+          },
+          {
+            "close": {
+              "day": 3,
+              "time": "1400"
+            },
+            "open": {
+              "day": 3,
+              "time": "0800"
+            }
+          },
+          {
+            "close": {
+              "day": 4,
+              "time": "1400"
+            },
+            "open": {
+              "day": 4,
+              "time": "0800"
+            }
+          },
+          {
+            "close": {
+              "day": 5,
+              "time": "1400"
+            },
+            "open": {
+              "day": 5,
+              "time": "0800"
+            }
+          }
+        ],
+        "weekday_text": [
+          "Monday: 8:00 AM – 2:00 PM",
+          "Tuesday: 8:00 AM – 2:00 PM",
+          "Wednesday: 8:00 AM – 2:00 PM",
+          "Thursday: 8:00 AM – 2:00 PM",
+          "Friday: 8:00 AM – 2:00 PM",
+          "Saturday: Closed",
+          "Sunday: Closed"
+        ]
+      },
+      "phoneNumber": "+30 21 0666 8223",
+      "placeId": "ChIJTyCIDMuboRQRhJKi0Y_8HVg",
+      "placeType": "bank"
+    },
+    {
+      "address": "Leof. Marathonos 87, Pallini 153 51, Greece",
+      "coords": {
+        "lat": 38.0036964,
+        "lng": 23.883063
+      },
+      "name": "National Bank of Greece",
+      "openingHours": {
+        "open_now": true,
+        "periods": [
+          {
+            "close": {
+              "day": 1,
+              "time": "1430"
+            },
+            "open": {
+              "day": 1,
+              "time": "0800"
+            }
+          },
+          {
+            "close": {
+              "day": 2,
+              "time": "1430"
+            },
+            "open": {
+              "day": 2,
+              "time": "0800"
+            }
+          },
+          {
+            "close": {
+              "day": 3,
+              "time": "1430"
+            },
+            "open": {
+              "day": 3,
+              "time": "0800"
+            }
+          },
+          {
+            "close": {
+              "day": 4,
+              "time": "1430"
+            },
+            "open": {
+              "day": 4,
+              "time": "0800"
+            }
+          },
+          {
+            "close": {
+              "day": 5,
+              "time": "1400"
+            },
+            "open": {
+              "day": 5,
+              "time": "0800"
+            }
+          }
+        ],
+        "weekday_text": [
+          "Monday: 8:00 AM – 2:30 PM",
+          "Tuesday: 8:00 AM – 2:30 PM",
+          "Wednesday: 8:00 AM – 2:30 PM",
+          "Thursday: 8:00 AM – 2:30 PM",
+          "Friday: 8:00 AM – 2:00 PM",
+          "Saturday: Closed",
+          "Sunday: Closed"
+        ]
+      },
+      "phoneNumber": "+30 21 0666 2001",
+      "placeId": "ChIJhcgakLWboRQR8WqM8ZKyKnQ",
+      "placeType": "bank"
+    },
+    {
+      "address": "Leof. Marathonos 133, & Θεσσαλονίκης 153 44, Greece",
+      "coords": {
+        "lat": 38.0073201,
+        "lng": 23.8602191
+      },
+      "name": "Piraeus Bank",
+      "openingHours": {
+        "open_now": true,
+        "periods": [
+          {
+            "close": {
+              "day": 1,
+              "time": "1400"
+            },
+            "open": {
+              "day": 1,
+              "time": "0800"
+            }
+          },
+          {
+            "close": {
+              "day": 2,
+              "time": "1400"
+            },
+            "open": {
+              "day": 2,
+              "time": "0800"
+            }
+          },
+          {
+            "close": {
+              "day": 3,
+              "time": "1400"
+            },
+            "open": {
+              "day": 3,
+              "time": "0800"
+            }
+          },
+          {
+            "close": {
+              "day": 4,
+              "time": "1400"
+            },
+            "open": {
+              "day": 4,
+              "time": "0800"
+            }
+          },
+          {
+            "close": {
+              "day": 5,
+              "time": "1400"
+            },
+            "open": {
+              "day": 5,
+              "time": "0800"
+            }
+          }
+        ],
+        "weekday_text": [
+          "Monday: 8:00 AM – 2:00 PM",
+          "Tuesday: 8:00 AM – 2:00 PM",
+          "Wednesday: 8:00 AM – 2:00 PM",
+          "Thursday: 8:00 AM – 2:00 PM",
+          "Friday: 8:00 AM – 2:00 PM",
+          "Saturday: Closed",
+          "Sunday: Closed"
+        ]
+      },
+      "phoneNumber": "+30 21 6600 7080",
+      "placeId": "ChIJTxb4bdWboRQRnN046wrr6aU",
+      "placeType": "bank"
+    },
+    {
+      "address": "Leof. Marathonos 120, Gerakas 153 51, Greece",
+      "coords": {
+        "lat": 38.0071708,
+        "lng": 23.8596676
+      },
+      "name": "Piraeus Bank",
+      "openingHours": {
+        "open_now": true,
+        "periods": [
+          {
+            "close": {
+              "day": 1,
+              "time": "1400"
+            },
+            "open": {
+              "day": 1,
+              "time": "0800"
+            }
+          },
+          {
+            "close": {
+              "day": 2,
+              "time": "1400"
+            },
+            "open": {
+              "day": 2,
+              "time": "0800"
+            }
+          },
+          {
+            "close": {
+              "day": 3,
+              "time": "1400"
+            },
+            "open": {
+              "day": 3,
+              "time": "0800"
+            }
+          },
+          {
+            "close": {
+              "day": 4,
+              "time": "1400"
+            },
+            "open": {
+              "day": 4,
+              "time": "0800"
+            }
+          },
+          {
+            "close": {
+              "day": 5,
+              "time": "1400"
+            },
+            "open": {
+              "day": 5,
+              "time": "0800"
+            }
+          }
+        ],
+        "weekday_text": [
+          "Monday: 8:00 AM – 2:00 PM",
+          "Tuesday: 8:00 AM – 2:00 PM",
+          "Wednesday: 8:00 AM – 2:00 PM",
+          "Thursday: 8:00 AM – 2:00 PM",
+          "Friday: 8:00 AM – 2:00 PM",
+          "Saturday: Closed",
+          "Sunday: Closed"
+        ]
+      },
+      "phoneNumber": "+30 21 0666 3620",
+      "placeId": "ChIJ8ZcQccuboRQR9py88_Cqnwg",
+      "placeType": "bank"
+    },
+    {
+      "address": "Leof. Marathonos 52, Pallini 153 51, Greece",
+      "coords": {
+        "lat": 38.00362319999999,
+        "lng": 23.8774779
+      },
+      "name": "Eurobank",
+      "openingHours": {
+        "open_now": true,
+        "periods": [
+          {
+            "close": {
+              "day": 1,
+              "time": "1400"
+            },
+            "open": {
+              "day": 1,
+              "time": "0800"
+            }
+          },
+          {
+            "close": {
+              "day": 2,
+              "time": "1400"
+            },
+            "open": {
+              "day": 2,
+              "time": "0800"
+            }
+          },
+          {
+            "close": {
+              "day": 3,
+              "time": "1400"
+            },
+            "open": {
+              "day": 3,
+              "time": "0800"
+            }
+          },
+          {
+            "close": {
+              "day": 4,
+              "time": "1400"
+            },
+            "open": {
+              "day": 4,
+              "time": "0800"
+            }
+          },
+          {
+            "close": {
+              "day": 5,
+              "time": "1400"
+            },
+            "open": {
+              "day": 5,
+              "time": "0800"
+            }
+          }
+        ],
+        "weekday_text": [
+          "Monday: 8:00 AM – 2:00 PM",
+          "Tuesday: 8:00 AM – 2:00 PM",
+          "Wednesday: 8:00 AM – 2:00 PM",
+          "Thursday: 8:00 AM – 2:00 PM",
+          "Friday: 8:00 AM – 2:00 PM",
+          "Saturday: Closed",
+          "Sunday: Closed"
+        ]
+      },
+      "phoneNumber": "+30 21 0603 0197",
+      "placeId": "ChIJK_UlbsuboRQRONo4arsZqXs",
+      "placeType": "bank"
+    },
+    {
+      "address": "Municipality of Pallini 153 51, Greece",
+      "coords": {
+        "lat": 37.9976502,
+        "lng": 23.8712924
+      },
+      "name": "Piraeus bank stores Pallini",
+      "placeId": "ChIJC8bf8DGaoRQReRuOpEIU8tE",
+      "placeType": "bank"
+    },
+    {
+      "address": "Leof. Marathonos 72, Pallini 153 51, Greece",
+      "coords": {
+        "lat": 38.00365439999999,
+        "lng": 23.8799382
+      },
+      "name": "I love Souvlaki",
+      "openingHours": {
+        "open_now": false,
+        "periods": [
+          {
+            "close": {
+              "day": 2,
+              "time": "0030"
+            },
+            "open": {
+              "day": 1,
+              "time": "1130"
+            }
+          },
+          {
+            "close": {
+              "day": 3,
+              "time": "0030"
+            },
+            "open": {
+              "day": 2,
+              "time": "1130"
+            }
+          },
+          {
+            "close": {
+              "day": 4,
+              "time": "0030"
+            },
+            "open": {
+              "day": 3,
+              "time": "1130"
+            }
+          },
+          {
+            "close": {
+              "day": 5,
+              "time": "0030"
+            },
+            "open": {
+              "day": 4,
+              "time": "1130"
+            }
+          },
+          {
+            "close": {
+              "day": 6,
+              "time": "0100"
+            },
+            "open": {
+              "day": 5,
+              "time": "1130"
+            }
+          },
+          {
+            "close": {
+              "day": 0,
+              "time": "0000"
+            },
+            "open": {
+              "day": 6,
+              "time": "1130"
+            }
+          }
+        ],
+        "weekday_text": [
+          "Monday: 11:30 AM – 12:30 AM",
+          "Tuesday: 11:30 AM – 12:30 AM",
+          "Wednesday: 11:30 AM – 12:30 AM",
+          "Thursday: 11:30 AM – 12:30 AM",
+          "Friday: 11:30 AM – 1:00 AM",
+          "Saturday: 11:30 AM – 12:00 AM",
+          "Sunday: Closed"
+        ]
+      },
+      "phoneNumber": "+30 21 0603 0497",
+      "placeId": "ChIJX23aV8qboRQRwuDHqwnBIig",
+      "placeType": "restaurant"
+    },
+    {
+      "address": "Λεωφ. Μαραθώνος και Κύπρου, Pallini 153 51, Greece",
+      "coords": {
+        "lat": 38.00361110000001,
+        "lng": 23.8794444
+      },
+      "name": "Grēgórēs",
+      "openingHours": {
+        "open_now": true,
+        "periods": [
+          {
+            "close": {
+              "day": 0,
+              "time": "2030"
+            },
+            "open": {
+              "day": 0,
+              "time": "0600"
+            }
+          },
+          {
+            "close": {
+              "day": 1,
+              "time": "2030"
+            },
+            "open": {
+              "day": 1,
+              "time": "0530"
+            }
+          },
+          {
+            "close": {
+              "day": 2,
+              "time": "2030"
+            },
+            "open": {
+              "day": 2,
+              "time": "0530"
+            }
+          },
+          {
+            "close": {
+              "day": 3,
+              "time": "2030"
+            },
+            "open": {
+              "day": 3,
+              "time": "0530"
+            }
+          },
+          {
+            "close": {
+              "day": 4,
+              "time": "2030"
+            },
+            "open": {
+              "day": 4,
+              "time": "0530"
+            }
+          },
+          {
+            "close": {
+              "day": 5,
+              "time": "2030"
+            },
+            "open": {
+              "day": 5,
+              "time": "0530"
+            }
+          },
+          {
+            "close": {
+              "day": 6,
+              "time": "2030"
+            },
+            "open": {
+              "day": 6,
+              "time": "0600"
+            }
+          }
+        ],
+        "weekday_text": [
+          "Monday: 5:30 AM – 8:30 PM",
+          "Tuesday: 5:30 AM – 8:30 PM",
+          "Wednesday: 5:30 AM – 8:30 PM",
+          "Thursday: 5:30 AM – 8:30 PM",
+          "Friday: 5:30 AM – 8:30 PM",
+          "Saturday: 6:00 AM – 8:30 PM",
+          "Sunday: 6:00 AM – 8:30 PM"
+        ]
+      },
+      "phoneNumber": "+30 21 3040 0400",
+      "placeId": "ChIJjdVl_8qboRQRzfpBFh1X2VQ",
+      "placeType": "restaurant"
+    },
+    {
+      "address": "Leof. Marathonos 76, Pallini 153 51, Greece",
+      "coords": {
+        "lat": 38.00367440000001,
+        "lng": 23.8804814
+      },
+      "name": "Cook And Grill Παλλήνης",
+      "openingHours": {
+        "open_now": false,
+        "periods": [
+          {
+            "close": {
+              "day": 1,
+              "time": "0100"
+            },
+            "open": {
+              "day": 0,
+              "time": "1100"
+            }
+          },
+          {
+            "close": {
+              "day": 2,
+              "time": "0100"
+            },
+            "open": {
+              "day": 1,
+              "time": "1100"
+            }
+          },
+          {
+            "close": {
+              "day": 3,
+              "time": "0100"
+            },
+            "open": {
+              "day": 2,
+              "time": "1100"
+            }
+          },
+          {
+            "close": {
+              "day": 4,
+              "time": "0100"
+            },
+            "open": {
+              "day": 3,
+              "time": "1100"
+            }
+          },
+          {
+            "close": {
+              "day": 5,
+              "time": "0100"
+            },
+            "open": {
+              "day": 4,
+              "time": "1100"
+            }
+          },
+          {
+            "close": {
+              "day": 6,
+              "time": "0100"
+            },
+            "open": {
+              "day": 5,
+              "time": "1100"
+            }
+          },
+          {
+            "close": {
+              "day": 0,
+              "time": "0100"
+            },
+            "open": {
+              "day": 6,
+              "time": "1100"
+            }
+          }
+        ],
+        "weekday_text": [
+          "Monday: 11:00 AM – 1:00 AM",
+          "Tuesday: 11:00 AM – 1:00 AM",
+          "Wednesday: 11:00 AM – 1:00 AM",
+          "Thursday: 11:00 AM – 1:00 AM",
+          "Friday: 11:00 AM – 1:00 AM",
+          "Saturday: 11:00 AM – 1:00 AM",
+          "Sunday: 11:00 AM – 1:00 AM"
+        ]
+      },
+      "phoneNumber": "+30 21 0666 9010",
+      "placeId": "ChIJt_rvWMqboRQRjos2rM0aUvw",
+      "placeType": "restaurant"
+    },
+    {
+      "address": "Ipsilantou 10, Pallini 153 51, Greece",
+      "coords": {
+        "lat": 38.0031383,
+        "lng": 23.8818679
+      },
+      "name": "Pizza Pinokio",
+      "openingHours": {
+        "open_now": true,
+        "periods": [
+          {
+            "close": {
+              "day": 1,
+              "time": "0000"
+            },
+            "open": {
+              "day": 0,
+              "time": "0700"
+            }
+          },
+          {
+            "close": {
+              "day": 2,
+              "time": "0000"
+            },
+            "open": {
+              "day": 1,
+              "time": "0700"
+            }
+          },
+          {
+            "close": {
+              "day": 3,
+              "time": "0000"
+            },
+            "open": {
+              "day": 2,
+              "time": "0700"
+            }
+          },
+          {
+            "close": {
+              "day": 4,
+              "time": "0000"
+            },
+            "open": {
+              "day": 3,
+              "time": "0700"
+            }
+          },
+          {
+            "close": {
+              "day": 5,
+              "time": "0000"
+            },
+            "open": {
+              "day": 4,
+              "time": "0700"
+            }
+          },
+          {
+            "close": {
+              "day": 6,
+              "time": "0000"
+            },
+            "open": {
+              "day": 5,
+              "time": "0700"
+            }
+          },
+          {
+            "close": {
+              "day": 0,
+              "time": "0000"
+            },
+            "open": {
+              "day": 6,
+              "time": "0700"
+            }
+          }
+        ],
+        "weekday_text": [
+          "Monday: 7:00 AM – 12:00 AM",
+          "Tuesday: 7:00 AM – 12:00 AM",
+          "Wednesday: 7:00 AM – 12:00 AM",
+          "Thursday: 7:00 AM – 12:00 AM",
+          "Friday: 7:00 AM – 12:00 AM",
+          "Saturday: 7:00 AM – 12:00 AM",
+          "Sunday: 7:00 AM – 12:00 AM"
+        ]
+      },
+      "phoneNumber": "+30 21 0603 0834",
+      "placeId": "ChIJI2guh8qboRQRr6oe6yfKPTQ",
+      "placeType": "restaurant"
+    },
+    {
+      "address": "Dodonis 31, Pallini 153 51, Greece",
+      "coords": {
+        "lat": 38.0080174,
+        "lng": 23.8911835
+      },
+      "name": "Chillbox S.A.",
+      "openingHours": {
+        "open_now": true,
+        "periods": [
+          {
+            "close": {
+              "day": 1,
+              "time": "1800"
+            },
+            "open": {
+              "day": 1,
+              "time": "0800"
+            }
+          },
+          {
+            "close": {
+              "day": 2,
+              "time": "1800"
+            },
+            "open": {
+              "day": 2,
+              "time": "0800"
+            }
+          },
+          {
+            "close": {
+              "day": 3,
+              "time": "1800"
+            },
+            "open": {
+              "day": 3,
+              "time": "0800"
+            }
+          },
+          {
+            "close": {
+              "day": 4,
+              "time": "1800"
+            },
+            "open": {
+              "day": 4,
+              "time": "0800"
+            }
+          },
+          {
+            "close": {
+              "day": 5,
+              "time": "1800"
+            },
+            "open": {
+              "day": 5,
+              "time": "0800"
+            }
+          }
+        ],
+        "weekday_text": [
+          "Monday: 8:00 AM – 6:00 PM",
+          "Tuesday: 8:00 AM – 6:00 PM",
+          "Wednesday: 8:00 AM – 6:00 PM",
+          "Thursday: 8:00 AM – 6:00 PM",
+          "Friday: 8:00 AM – 6:00 PM",
+          "Saturday: Closed",
+          "Sunday: Closed"
+        ]
+      },
+      "phoneNumber": "+30 21 0607 1300",
+      "placeId": "ChIJ79xz49uboRQRUTfI1qCll4I",
+      "placeType": "restaurant"
+    },
+    {
+      "address": "Leof. Marathonos 70, Pallini 153 51, Greece",
+      "coords": {
+        "lat": 38.00365559999999,
+        "lng": 23.8798672
+      },
+      "name": "Το Κουζινάκι της Παλλήνης",
+      "openingHours": {
+        "open_now": false,
+        "periods": [
+          {
+            "close": {
+              "day": 1,
+              "time": "1800"
+            },
+            "open": {
+              "day": 1,
+              "time": "1200"
+            }
+          },
+          {
+            "close": {
+              "day": 2,
+              "time": "1800"
+            },
+            "open": {
+              "day": 2,
+              "time": "1200"
+            }
+          },
+          {
+            "close": {
+              "day": 3,
+              "time": "1800"
+            },
+            "open": {
+              "day": 3,
+              "time": "1200"
+            }
+          },
+          {
+            "close": {
+              "day": 4,
+              "time": "1800"
+            },
+            "open": {
+              "day": 4,
+              "time": "1200"
+            }
+          },
+          {
+            "close": {
+              "day": 5,
+              "time": "1800"
+            },
+            "open": {
+              "day": 5,
+              "time": "1200"
+            }
+          },
+          {
+            "close": {
+              "day": 6,
+              "time": "1800"
+            },
+            "open": {
+              "day": 6,
+              "time": "1200"
+            }
+          }
+        ],
+        "weekday_text": [
+          "Monday: 12:00 – 6:00 PM",
+          "Tuesday: 12:00 – 6:00 PM",
+          "Wednesday: 12:00 – 6:00 PM",
+          "Thursday: 12:00 – 6:00 PM",
+          "Friday: 12:00 – 6:00 PM",
+          "Saturday: 12:00 – 6:00 PM",
+          "Sunday: Closed"
+        ]
+      },
+      "phoneNumber": "+30 21 3090 5010",
+      "placeId": "ChIJZxg333CboRQRlDLekNNyfkI",
+      "placeType": "restaurant"
+    },
+    {
+      "address": "Leof. Marathonos 65, Pallini 153 51, Greece",
+      "coords": {
+        "lat": 38.0039037,
+        "lng": 23.8804669
+      },
+      "name": "Roma Pizza Παλλήνη",
+      "openingHours": {
+        "open_now": false,
+        "periods": [
+          {
+            "close": {
+              "day": 1,
+              "time": "0030"
+            },
+            "open": {
+              "day": 0,
+              "time": "1200"
+            }
+          },
+          {
+            "close": {
+              "day": 2,
+              "time": "0030"
+            },
+            "open": {
+              "day": 1,
+              "time": "1200"
+            }
+          },
+          {
+            "close": {
+              "day": 3,
+              "time": "0030"
+            },
+            "open": {
+              "day": 2,
+              "time": "1200"
+            }
+          },
+          {
+            "close": {
+              "day": 4,
+              "time": "0030"
+            },
+            "open": {
+              "day": 3,
+              "time": "1200"
+            }
+          },
+          {
+            "close": {
+              "day": 5,
+              "time": "0030"
+            },
+            "open": {
+              "day": 4,
+              "time": "1200"
+            }
+          },
+          {
+            "close": {
+              "day": 6,
+              "time": "0030"
+            },
+            "open": {
+              "day": 5,
+              "time": "1200"
+            }
+          },
+          {
+            "close": {
+              "day": 0,
+              "time": "0030"
+            },
+            "open": {
+              "day": 6,
+              "time": "1200"
+            }
+          }
+        ],
+        "weekday_text": [
+          "Monday: 12:00 PM – 12:30 AM",
+          "Tuesday: 12:00 PM – 12:30 AM",
+          "Wednesday: 12:00 PM – 12:30 AM",
+          "Thursday: 12:00 PM – 12:30 AM",
+          "Friday: 12:00 PM – 12:30 AM",
+          "Saturday: 12:00 PM – 12:30 AM",
+          "Sunday: 12:00 PM – 12:30 AM"
+        ]
+      },
+      "phoneNumber": "+30 21 0603 4212",
+      "placeId": "ChIJmTzfZcqboRQRbrA0lCm7pDs",
+      "placeType": "restaurant"
+    },
+    {
+      "address": "Patriarchou Grigoriou E 8, Pallini 153 51, Greece",
+      "coords": {
+        "lat": 38.00477899999999,
+        "lng": 23.8809766
+      },
+      "name": "Ληχούδης Φούρνος-Ζαχαροπλαστείο",
+      "openingHours": {
+        "open_now": true,
+        "periods": [
+          {
+            "close": {
+              "day": 0,
+              "time": "2300"
+            },
+            "open": {
+              "day": 0,
+              "time": "0600"
+            }
+          },
+          {
+            "close": {
+              "day": 1,
+              "time": "2300"
+            },
+            "open": {
+              "day": 1,
+              "time": "0600"
+            }
+          },
+          {
+            "close": {
+              "day": 2,
+              "time": "2300"
+            },
+            "open": {
+              "day": 2,
+              "time": "0600"
+            }
+          },
+          {
+            "close": {
+              "day": 3,
+              "time": "2300"
+            },
+            "open": {
+              "day": 3,
+              "time": "0600"
+            }
+          },
+          {
+            "close": {
+              "day": 4,
+              "time": "2300"
+            },
+            "open": {
+              "day": 4,
+              "time": "0600"
+            }
+          },
+          {
+            "close": {
+              "day": 5,
+              "time": "2300"
+            },
+            "open": {
+              "day": 5,
+              "time": "0600"
+            }
+          },
+          {
+            "close": {
+              "day": 6,
+              "time": "2300"
+            },
+            "open": {
+              "day": 6,
+              "time": "0600"
+            }
+          }
+        ],
+        "weekday_text": [
+          "Monday: 6:00 AM – 11:00 PM",
+          "Tuesday: 6:00 AM – 11:00 PM",
+          "Wednesday: 6:00 AM – 11:00 PM",
+          "Thursday: 6:00 AM – 11:00 PM",
+          "Friday: 6:00 AM – 11:00 PM",
+          "Saturday: 6:00 AM – 11:00 PM",
+          "Sunday: 6:00 AM – 11:00 PM"
+        ]
+      },
+      "phoneNumber": "+30 21 0666 8202",
+      "placeId": "ChIJ5wkya8qboRQR510ga7axRUQ",
+      "placeType": "restaurant"
+    },
+    {
+      "address": "Pl. Eleftherias, Pallini 153 51, Greece",
+      "coords": {
+        "lat": 38.003164,
+        "lng": 23.8804891
+      },
+      "name": "ΕΛΕΥΘΕΡΙΑΣ ΠΑΛΛΗΝΗΠΛΑΤΕΙΑ",
+      "placeId": "ChIJD8nB88qboRQRYGY9ZpGjhLw",
+      "placeType": "restaurant"
+    },
+    {
+      "address": "Municipality of Pallini 153 51, Greece",
+      "coords": {
+        "lat": 38.00512609999999,
+        "lng": 23.87039189999999
+      },
+      "name": "Ελληνικόν - Ψητοπωλείο - Ellēnikón",
+      "openingHours": {
+        "open_now": true,
+        "periods": [
+          {
+            "close": {
+              "day": 0,
+              "time": "2359"
+            },
+            "open": {
+              "day": 0,
+              "time": "0900"
+            }
+          },
+          {
+            "close": {
+              "day": 1,
+              "time": "2359"
+            },
+            "open": {
+              "day": 1,
+              "time": "0900"
+            }
+          },
+          {
+            "close": {
+              "day": 2,
+              "time": "2359"
+            },
+            "open": {
+              "day": 2,
+              "time": "0900"
+            }
+          },
+          {
+            "close": {
+              "day": 3,
+              "time": "2359"
+            },
+            "open": {
+              "day": 3,
+              "time": "0900"
+            }
+          },
+          {
+            "close": {
+              "day": 4,
+              "time": "2359"
+            },
+            "open": {
+              "day": 4,
+              "time": "0900"
+            }
+          },
+          {
+            "close": {
+              "day": 5,
+              "time": "2359"
+            },
+            "open": {
+              "day": 5,
+              "time": "0900"
+            }
+          },
+          {
+            "close": {
+              "day": 6,
+              "time": "2359"
+            },
+            "open": {
+              "day": 6,
+              "time": "0900"
+            }
+          }
+        ],
+        "weekday_text": [
+          "Monday: 9:00 AM – 11:59 PM",
+          "Tuesday: 9:00 AM – 11:59 PM",
+          "Wednesday: 9:00 AM – 11:59 PM",
+          "Thursday: 9:00 AM – 11:59 PM",
+          "Friday: 9:00 AM – 11:59 PM",
+          "Saturday: 9:00 AM – 11:59 PM",
+          "Sunday: 9:00 AM – 11:59 PM"
+        ]
+      },
+      "phoneNumber": "+30 21 5510 2765",
+      "placeId": "ChIJma7YMmOboRQRgosi2yHBlHo",
+      "placeType": "restaurant"
+    },
+    {
+      "address": "Meg. Alexandrou 19, Pallini 153 51, Greece",
+      "coords": {
+        "lat": 38.00243529999999,
+        "lng": 23.8816372
+      },
+      "name": "Ενα + Ενα Μεζε",
+      "openingHours": {
+        "open_now": false,
+        "periods": [
+          {
+            "close": {
+              "day": 0,
+              "time": "1800"
+            },
+            "open": {
+              "day": 0,
+              "time": "1200"
+            }
+          },
+          {
+            "close": {
+              "day": 2,
+              "time": "0000"
+            },
+            "open": {
+              "day": 1,
+              "time": "1200"
+            }
+          },
+          {
+            "close": {
+              "day": 3,
+              "time": "0000"
+            },
+            "open": {
+              "day": 2,
+              "time": "1200"
+            }
+          },
+          {
+            "close": {
+              "day": 4,
+              "time": "0000"
+            },
+            "open": {
+              "day": 3,
+              "time": "1200"
+            }
+          },
+          {
+            "close": {
+              "day": 5,
+              "time": "0000"
+            },
+            "open": {
+              "day": 4,
+              "time": "1200"
+            }
+          },
+          {
+            "close": {
+              "day": 6,
+              "time": "0000"
+            },
+            "open": {
+              "day": 5,
+              "time": "1200"
+            }
+          },
+          {
+            "close": {
+              "day": 0,
+              "time": "0000"
+            },
+            "open": {
+              "day": 6,
+              "time": "1200"
+            }
+          }
+        ],
+        "weekday_text": [
+          "Monday: 12:00 PM – 12:00 AM",
+          "Tuesday: 12:00 PM – 12:00 AM",
+          "Wednesday: 12:00 PM – 12:00 AM",
+          "Thursday: 12:00 PM – 12:00 AM",
+          "Friday: 12:00 PM – 12:00 AM",
+          "Saturday: 12:00 PM – 12:00 AM",
+          "Sunday: 12:00 – 6:00 PM"
+        ]
+      },
+      "phoneNumber": "+30 21 0666 6614",
+      "placeId": "ChIJzbmWm8qboRQRfaAownDJGJ0",
+      "placeType": "restaurant"
+    },
+    {
+      "address": "Leof. Marathonos 100, Pallini 153 51, Greece",
+      "coords": {
+        "lat": 38.0035758,
+        "lng": 23.8824081
+      },
+      "name": "ΚΑΡΑΛΗΣ Γ & Σ ΟΕ",
+      "phoneNumber": "+30 2294 084771",
+      "placeId": "ChIJsQwWhrWboRQRd7nz3uzkbFg",
+      "placeType": "restaurant"
+    },
+    {
+      "address": "El. Venizelou 52, Pallini 153 51, Greece",
+      "coords": {
+        "lat": 37.99903940000001,
+        "lng": 23.8755276
+      },
+      "name": "ΤΟ ΤΑΒΕΡΝΑΚΙ ΤΟΥ ΣΑΜΨΩΝ",
+      "openingHours": {
+        "open_now": false,
+        "periods": [
+          {
+            "close": {
+              "day": 0,
+              "time": "1900"
+            },
+            "open": {
+              "day": 0,
+              "time": "1200"
+            }
+          },
+          {
+            "close": {
+              "day": 2,
+              "time": "0100"
+            },
+            "open": {
+              "day": 1,
+              "time": "1900"
+            }
+          },
+          {
+            "close": {
+              "day": 3,
+              "time": "0100"
+            },
+            "open": {
+              "day": 2,
+              "time": "1900"
+            }
+          },
+          {
+            "close": {
+              "day": 4,
+              "time": "0100"
+            },
+            "open": {
+              "day": 3,
+              "time": "1900"
+            }
+          },
+          {
+            "close": {
+              "day": 5,
+              "time": "0100"
+            },
+            "open": {
+              "day": 4,
+              "time": "1900"
+            }
+          },
+          {
+            "close": {
+              "day": 6,
+              "time": "0100"
+            },
+            "open": {
+              "day": 5,
+              "time": "1900"
+            }
+          },
+          {
+            "close": {
+              "day": 0,
+              "time": "0100"
+            },
+            "open": {
+              "day": 6,
+              "time": "1900"
+            }
+          }
+        ],
+        "weekday_text": [
+          "Monday: 7:00 PM – 1:00 AM",
+          "Tuesday: 7:00 PM – 1:00 AM",
+          "Wednesday: 7:00 PM – 1:00 AM",
+          "Thursday: 7:00 PM – 1:00 AM",
+          "Friday: 7:00 PM – 1:00 AM",
+          "Saturday: 7:00 PM – 1:00 AM",
+          "Sunday: 12:00 – 7:00 PM"
+        ]
+      },
+      "phoneNumber": "+30 21 0666 6027",
+      "placeId": "ChIJJUi4mjOaoRQRC0MZKuqefXs",
+      "placeType": "restaurant"
+    },
+    {
+      "address": "Leof. Marathonos 99, Pallini 153 51, Greece",
+      "coords": {
+        "lat": 38.0037813,
+        "lng": 23.8853358
+      },
+      "name": "Ilioupoli Restaurants S.A.",
+      "phoneNumber": "+30 21 0603 3620",
+      "placeId": "ChIJla411puboRQRFO9ihcQ4Ocg",
+      "placeType": "restaurant"
+    },
+    {
+      "address": "Leof. Marathonos 99, Pallini 153 51, Greece",
+      "coords": {
+        "lat": 38.0037471,
+        "lng": 23.8854039
+      },
+      "name": "Goody's Burger House",
+      "openingHours": {
+        "open_now": false,
+        "periods": [
+          {
+            "close": {
+              "day": 1,
+              "time": "0000"
+            },
+            "open": {
+              "day": 0,
+              "time": "1100"
+            }
+          },
+          {
+            "close": {
+              "day": 2,
+              "time": "0000"
+            },
+            "open": {
+              "day": 1,
+              "time": "1100"
+            }
+          },
+          {
+            "close": {
+              "day": 3,
+              "time": "0000"
+            },
+            "open": {
+              "day": 2,
+              "time": "1100"
+            }
+          },
+          {
+            "close": {
+              "day": 4,
+              "time": "0000"
+            },
+            "open": {
+              "day": 3,
+              "time": "1100"
+            }
+          },
+          {
+            "close": {
+              "day": 5,
+              "time": "0000"
+            },
+            "open": {
+              "day": 4,
+              "time": "1100"
+            }
+          },
+          {
+            "close": {
+              "day": 6,
+              "time": "0000"
+            },
+            "open": {
+              "day": 5,
+              "time": "1100"
+            }
+          },
+          {
+            "close": {
+              "day": 0,
+              "time": "0000"
+            },
+            "open": {
+              "day": 6,
+              "time": "1100"
+            }
+          }
+        ],
+        "weekday_text": [
+          "Monday: 11:00 AM – 12:00 AM",
+          "Tuesday: 11:00 AM – 12:00 AM",
+          "Wednesday: 11:00 AM – 12:00 AM",
+          "Thursday: 11:00 AM – 12:00 AM",
+          "Friday: 11:00 AM – 12:00 AM",
+          "Saturday: 11:00 AM – 12:00 AM",
+          "Sunday: 11:00 AM – 12:00 AM"
+        ]
+      },
+      "phoneNumber": "+30 21 0603 3600",
+      "placeId": "ChIJD_qniLWboRQRC4uQ-AE-pwA",
+      "placeType": "restaurant"
+    },
+    {
+      "address": "Leof. Marathonos 176, Gerakas 153 44, Greece",
+      "coords": {
+        "lat": 38.0059804,
+        "lng": 23.8664916
+      },
+      "name": "chickens NTAGIANTIS",
+      "openingHours": {
+        "open_now": false,
+        "periods": [
+          {
+            "close": {
+              "day": 1,
+              "time": "2300"
+            },
+            "open": {
+              "day": 1,
+              "time": "1100"
+            }
+          },
+          {
+            "close": {
+              "day": 2,
+              "time": "2300"
+            },
+            "open": {
+              "day": 2,
+              "time": "1100"
+            }
+          },
+          {
+            "close": {
+              "day": 3,
+              "time": "2300"
+            },
+            "open": {
+              "day": 3,
+              "time": "1100"
+            }
+          },
+          {
+            "close": {
+              "day": 4,
+              "time": "2300"
+            },
+            "open": {
+              "day": 4,
+              "time": "1100"
+            }
+          },
+          {
+            "close": {
+              "day": 5,
+              "time": "2300"
+            },
+            "open": {
+              "day": 5,
+              "time": "1100"
+            }
+          },
+          {
+            "close": {
+              "day": 6,
+              "time": "2300"
+            },
+            "open": {
+              "day": 6,
+              "time": "1100"
+            }
+          }
+        ],
+        "weekday_text": [
+          "Monday: 11:00 AM – 11:00 PM",
+          "Tuesday: 11:00 AM – 11:00 PM",
+          "Wednesday: 11:00 AM – 11:00 PM",
+          "Thursday: 11:00 AM – 11:00 PM",
+          "Friday: 11:00 AM – 11:00 PM",
+          "Saturday: 11:00 AM – 11:00 PM",
+          "Sunday: Closed"
+        ]
+      },
+      "phoneNumber": "+30 21 0666 6453",
+      "placeId": "ChIJ9wbOD9OboRQRcPtTHnlTwO4",
+      "placeType": "restaurant"
+    },
+    {
+      "address": "Leof. Marathonos 115, Pallini 153 51, Greece",
+      "coords": {
+        "lat": 38.0042065,
+        "lng": 23.8871355
+      },
+      "name": "Rakomazemata",
+      "placeId": "ChIJ_1-iELSboRQROV9JxX0rv1s",
+      "placeType": "restaurant"
+    },
+    {
+      "address": "Leof. Marathonos 126, Athina 153 51, Greece",
+      "coords": {
+        "lat": 38.0037465,
+        "lng": 23.8873986
+      },
+      "name": "everest",
+      "openingHours": {
+        "open_now": true,
+        "periods": [
+          {
+            "close": {
+              "day": 0,
+              "time": "1800"
+            },
+            "open": {
+              "day": 0,
+              "time": "0600"
+            }
+          },
+          {
+            "close": {
+              "day": 1,
+              "time": "1800"
+            },
+            "open": {
+              "day": 1,
+              "time": "0600"
+            }
+          },
+          {
+            "close": {
+              "day": 2,
+              "time": "1800"
+            },
+            "open": {
+              "day": 2,
+              "time": "0600"
+            }
+          },
+          {
+            "close": {
+              "day": 3,
+              "time": "1800"
+            },
+            "open": {
+              "day": 3,
+              "time": "0600"
+            }
+          },
+          {
+            "close": {
+              "day": 4,
+              "time": "1800"
+            },
+            "open": {
+              "day": 4,
+              "time": "0600"
+            }
+          },
+          {
+            "close": {
+              "day": 5,
+              "time": "1800"
+            },
+            "open": {
+              "day": 5,
+              "time": "0600"
+            }
+          },
+          {
+            "close": {
+              "day": 6,
+              "time": "1800"
+            },
+            "open": {
+              "day": 6,
+              "time": "0600"
+            }
+          }
+        ],
+        "weekday_text": [
+          "Monday: 6:00 AM – 6:00 PM",
+          "Tuesday: 6:00 AM – 6:00 PM",
+          "Wednesday: 6:00 AM – 6:00 PM",
+          "Thursday: 6:00 AM – 6:00 PM",
+          "Friday: 6:00 AM – 6:00 PM",
+          "Saturday: 6:00 AM – 6:00 PM",
+          "Sunday: 6:00 AM – 6:00 PM"
+        ]
+      },
+      "phoneNumber": "+30 21 0603 4221",
+      "placeId": "ChIJC25xELSboRQRajHRtVQDr4Q",
+      "placeType": "restaurant"
+    },
+    {
+      "address": "Aggelou Sikelianou 49, Pallini 153 51, Greece",
+      "coords": {
+        "lat": 38.0148519,
+        "lng": 23.8753442
+      },
+      "name": "Atlantis all day pool and sports restaurant cafe",
+      "openingHours": {
+        "open_now": true,
+        "periods": [
+          {
+            "close": {
+              "day": 0,
+              "time": "2200"
+            },
+            "open": {
+              "day": 0,
+              "time": "0800"
+            }
+          },
+          {
+            "close": {
+              "day": 1,
+              "time": "2300"
+            },
+            "open": {
+              "day": 1,
+              "time": "0800"
+            }
+          },
+          {
+            "close": {
+              "day": 2,
+              "time": "2300"
+            },
+            "open": {
+              "day": 2,
+              "time": "0800"
+            }
+          },
+          {
+            "close": {
+              "day": 3,
+              "time": "2300"
+            },
+            "open": {
+              "day": 3,
+              "time": "0800"
+            }
+          },
+          {
+            "close": {
+              "day": 4,
+              "time": "2300"
+            },
+            "open": {
+              "day": 4,
+              "time": "0800"
+            }
+          },
+          {
+            "close": {
+              "day": 5,
+              "time": "2300"
+            },
+            "open": {
+              "day": 5,
+              "time": "0800"
+            }
+          },
+          {
+            "close": {
+              "day": 6,
+              "time": "2200"
+            },
+            "open": {
+              "day": 6,
+              "time": "0800"
+            }
+          }
+        ],
+        "weekday_text": [
+          "Monday: 8:00 AM – 11:00 PM",
+          "Tuesday: 8:00 AM – 11:00 PM",
+          "Wednesday: 8:00 AM – 11:00 PM",
+          "Thursday: 8:00 AM – 11:00 PM",
+          "Friday: 8:00 AM – 11:00 PM",
+          "Saturday: 8:00 AM – 10:00 PM",
+          "Sunday: 8:00 AM – 10:00 PM"
+        ]
+      },
+      "phoneNumber": "+30 21 0603 0402",
+      "placeId": "ChIJ23KekQuboRQRwwYS2I3q5Ps",
+      "placeType": "restaurant"
+    },
+    {
+      "address": "Thessalonikis 35, Gerakas 153 44, Greece",
+      "coords": {
+        "lat": 38.0079048,
+        "lng": 23.8597299
+      },
+      "name": "ιππόκαμπος",
+      "openingHours": {
+        "open_now": false,
+        "periods": [
+          {
+            "close": {
+              "day": 0,
+              "time": "1830"
+            },
+            "open": {
+              "day": 0,
+              "time": "1230"
+            }
+          },
+          {
+            "close": {
+              "day": 1,
+              "time": "2330"
+            },
+            "open": {
+              "day": 1,
+              "time": "1230"
+            }
+          },
+          {
+            "close": {
+              "day": 2,
+              "time": "2330"
+            },
+            "open": {
+              "day": 2,
+              "time": "1230"
+            }
+          },
+          {
+            "close": {
+              "day": 3,
+              "time": "2330"
+            },
+            "open": {
+              "day": 3,
+              "time": "1230"
+            }
+          },
+          {
+            "close": {
+              "day": 4,
+              "time": "2330"
+            },
+            "open": {
+              "day": 4,
+              "time": "1230"
+            }
+          },
+          {
+            "close": {
+              "day": 6,
+              "time": "0000"
+            },
+            "open": {
+              "day": 5,
+              "time": "1230"
+            }
+          },
+          {
+            "close": {
+              "day": 0,
+              "time": "0000"
+            },
+            "open": {
+              "day": 6,
+              "time": "1230"
+            }
+          }
+        ],
+        "weekday_text": [
+          "Monday: 12:30 – 11:30 PM",
+          "Tuesday: 12:30 – 11:30 PM",
+          "Wednesday: 12:30 – 11:30 PM",
+          "Thursday: 12:30 – 11:30 PM",
+          "Friday: 12:30 PM – 12:00 AM",
+          "Saturday: 12:30 PM – 12:00 AM",
+          "Sunday: 12:30 – 6:30 PM"
+        ]
+      },
+      "phoneNumber": "+30 21 0604 7456",
+      "placeId": "ChIJJ-Ep0uuboRQR89NGXVs8gsw",
+      "placeType": "restaurant"
+    }
+  ]
+}

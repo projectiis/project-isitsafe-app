@@ -1,0 +1,18 @@
+{
+  "status": "ok",
+  "placeRating": {
+    "numOfRatings": 2,
+    "placeType": "restaurant",
+    "rules": {
+      "Απόσταση Τραπεζιών": 100,
+      "Γάντια": 88,
+      "Μάσκες": 50
+    },
+    "finalRating": 80
+  },
+  "ratingSchema": {
+    "Μάσκες": 4,
+    "Απόσταση Τραπεζιών": 1,
+    "Γάντια": 4
+  }
+}

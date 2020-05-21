@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "505317017948",
+    "firebase_url": "https://isitsafe-276523.firebaseio.com",
+    "project_id": "isitsafe-276523",
+    "storage_bucket": "isitsafe-276523.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:505317017948:android:c6c190c78487ff39929999",
+        "android_client_info": {
+          "package_name": "com.isitsafe"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "505317017948-iq0ga3ep5gk49l522nac6rkotc9889cm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.isitsafe",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "505317017948-oecs27lu6t6u1pit7c6qghhuuh0tefo5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdSJ68u-5Sa6Cd2m24attcGAp9WYIWK40"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "505317017948-oecs27lu6t6u1pit7c6qghhuuh0tefo5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
