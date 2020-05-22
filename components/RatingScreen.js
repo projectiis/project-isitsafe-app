@@ -13,6 +13,9 @@ import Spinner from './Spinner';
 
 import getPlaceRatingResponse from '../responses/getPlaceRatingResponse.json';
 
+import AlertBoxCallbackContext from './AlertBoxCallbackContext';
+import SpinnerCallbackContext from './SpinnerCallbackContext';
+
 const ListItem = ({ name, defaultValue, maxValue, onValueChange }) => {
   const [value, setValue] = useState(Math.round(defaultValue / 25));
   console.log(maxValue, value);
@@ -133,9 +136,8 @@ export default ({
     params: { placeId, placeType, uid },
   },
 }) => {
-  let tmpRules = [],
-    spinner,
-    alertBox;
+  let tmpRules = [];
+
   for (let rule in getPlaceRatingResponse.placeRating.rules) {
     tmpRules.push({
       name: rule,
@@ -191,71 +193,129 @@ export default ({
   //     });
   // };
 
-  const submitRating = () => {
-    // spinner.loadingStarted();
+  const submitRating = (alertCallbackObj, spinnerCallbackObj) => {
+    navigation.navigate('Spinner');
 
-    // let rulesObj = {};
-    // for (rule of newRules) rulesObj[rule.name] = rule.defaultValue;
-    // fetch('https://europe-west3-isitsafe-276523.cloudfunctions.net/addRating', {
-    //   method: 'POST',
-    //   headers: {
-    //     Authorization: uid,
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify({ placeId, placeType, rules: rulesObj }),
-    // })
-    //   .then(res => {
-    //     if (res.ok) return res.json();
-    //   })
-    //   .then(jsonResponse => {
-    //     if (jsonResponse.status === 'ok') {
-    //       spinner.loadingFinished(navigation.goBack);
-    //     } else if (jsonResponse.status === 'unauthorized') {
-    //       alertBox.show(
-    //         'Unauthorized',
-    //         'You need to sign in to be able to rate this place',
-    //       );
-    //     }
-    //   })
-    //   .catch(err => console.log(err));
+    let rulesObj = {};
+    for (rule of newRules) rulesObj[rule.name] = rule.defaultValue;
+    fetch('https://europe-west3-isitsafe-276523.cloudfunctions.net/addRating', {
+      method: 'POST',
+      headers: {
+        Authorization: uid,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ placeId, placeType, rules: rulesObj }),
+    })
+      .then(res => {
+        if (res.ok) return res.json();
+      })
+      .then(jsonResponse => {
+        if (jsonResponse.status === 'ok') {
+          navigation.goBack();
+          navigation.goBack();
+        } else if (jsonResponse.status === 'unauthorized') {
+          navigation.goBack();
 
-    navigation.navigate('AlertBox', {
-      title: 'Unauthorized',
-      text: 'You must be signed in in order to rate this place',
-    });
+          alertCallbackObj.alertCallback = navigation => {
+            navigation.goBack();
+            navigation.goBack();
+          };
+
+          console.log('unautorized');
+          navigation.navigate('AlertBox', {
+            title: 'Unauthorized',
+            text: 'You must be signed in in order to rate this place',
+          });
+        } else if (
+          jsonResponse.status.includes('error') ||
+          jsonResponse.status === 'invalid_rating'
+        ) {
+          navigation.goBack();
+
+          alertCallbackObj.alertCallback = navigation => {
+            navigation.goBack();
+            navigation.goBack();
+          };
+
+          console.log('invalid_rating');
+          navigation.navigate('AlertBox', {
+            title: 'Oops',
+            text:
+              'An error occurred while we were processing your score for this place',
+          });
+        } else if (jsonResponse.status === 'invalid_place_type') {
+          navigation.goBack();
+
+          alertCallbackObj.alertCallback = navigation => {
+            navigation.goBack();
+            navigation.goBack();
+          };
+
+          console.log('invalid_place_type');
+          navigation.navigate('AlertBox', {
+            title: 'Invalid place type',
+            text:
+              'We thought that you could rate this place, but unfortunately you cannot',
+          });
+        }
+      })
+      .catch(err => {
+        navigation.goBack();
+
+        alertCallbackObj.alertCallback = navigation => {
+          navigation.goBack();
+          navigation.goBack();
+        };
+
+        console.log('error on catch');
+        navigation.navigate('AlertBox', {
+          title: 'Oops',
+          text:
+            'An error occurred while we were processing your score for this place',
+        });
+      });
   };
 
   return (
-    <View style={styles.ratingScreen}>
-      <Text style={styles.headerText}>
-        {'Help us determine\nthe safety of this place'}
-      </Text>
-      <FlatList
-        style={styles.flatList}
-        data={rules}
-        renderItem={({ item, index }) => (
-          <ListItem
-            {...item}
-            onValueChange={newValue => {
-              let tmpNewRules = Array.from(newRules);
-              tmpNewRules[index].defaultValue = newValue;
+    <AlertBoxCallbackContext.Consumer>
+      {alertCallbackObj => (
+        <SpinnerCallbackContext.Consumer>
+          {spinnerCallbackObj => (
+            <View style={styles.ratingScreen}>
+              <Text style={styles.headerText}>
+                {'Help us determine\nthe safety of this place'}
+              </Text>
+              <FlatList
+                style={styles.flatList}
+                data={rules}
+                renderItem={({ item, index }) => (
+                  <ListItem
+                    {...item}
+                    onValueChange={newValue => {
+                      let tmpNewRules = Array.from(newRules);
+                      tmpNewRules[index].defaultValue = newValue;
 
-              setNewRules(tmpNewRules);
-              console.log(newValue, tmpNewRules);
-            }}
-          />
-        )}
-        keyExtractor={(_, i) => i.toString()}
-      />
-      <TouchableOpacity
-        style={styles.button}
-        activeOpacity={0.4}
-        onPress={submitRating}
-      >
-        <Text style={styles.buttonText}>Submit</Text>
-      </TouchableOpacity>
-      <Spinner ref={ref => (spinner = ref)} />
-    </View>
+                      setNewRules(tmpNewRules);
+                      console.log(newValue, tmpNewRules);
+                    }}
+                  />
+                )}
+                keyExtractor={(_, i) => i.toString()}
+              />
+              <TouchableOpacity
+                style={styles.button}
+                activeOpacity={0.4}
+                onPress={() =>
+                  submitRating(alertCallbackObj, spinnerCallbackObj)
+                }
+              >
+                <Text style={styles.buttonText}>Submit</Text>
+              </TouchableOpacity>
+            </View>
+          )}
+        </SpinnerCallbackContext.Consumer>
+      )}
+    </AlertBoxCallbackContext.Consumer>
   );
 };
 

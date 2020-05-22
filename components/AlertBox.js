@@ -2,32 +2,9 @@ import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import Animated, { Easing } from 'react-native-reanimated';
 
-const { Value, timing, block, call } = Animated;
+import AlertBoxCallbackContext from './AlertBoxCallbackContext';
 
-// export default ({
-//   navigation,
-//   route: {
-//     params: { title, text },
-//   },
-// }) => {
-//   return (
-//     <View style={styles.parent}>
-//       <View style={styles.alert}>
-//         <View>
-//           <Text style={styles.title}>{title}</Text>
-//           <Text style={styles.text}>{text}</Text>
-//         </View>
-//         <TouchableOpacity
-//           style={styles.button}
-//           onPress={navigation.goBack}
-//           activeOpacity={0.4}
-//         >
-//           <Text style={styles.buttonText}>Ok</Text>
-//         </TouchableOpacity>
-//       </View>
-//     </View>
-//   );
-// };
+const { Value, timing, block, call } = Animated;
 
 export default class extends Component {
   constructor(props) {
@@ -39,6 +16,14 @@ export default class extends Component {
       title: '',
       text: '',
     };
+  }
+
+  componentDidMount() {
+    console.log('mounted');
+  }
+
+  componentDidUpdate() {
+    console.log('updated');
   }
 
   show(title, text) {
@@ -54,7 +39,7 @@ export default class extends Component {
     timing(this.scaleY, config).start();
   }
 
-  hide(callback) {
+  hide(alertCallbackObj) {
     const config = {
       duration: 200,
       toValue: 0,
@@ -62,39 +47,44 @@ export default class extends Component {
     };
 
     timing(this.scaleX, config).start();
-    timing(this.scaleY, config).start(callback);
+    timing(this.scaleY, config).start(() => {
+      alertCallbackObj.alertCallback(this.props.navigation);
+    });
   }
 
   render() {
-    // const { title, text } = this.state;
     const {
       navigation,
       route: {
-        params: { title, text },
+        params: { title, text, shouldGoBack, ratingScreenNavigationObj },
       },
     } = this.props;
 
     return (
-      <View style={styles.parent}>
-        <Animated.View
-          style={[styles.alert, { scaleX: this.scaleX, scaleY: this.scaleY }]}
-        >
-          <View>
-            <Text style={styles.title}>{title}</Text>
-            <Text style={styles.text}>{text}</Text>
+      <AlertBoxCallbackContext.Consumer>
+        {alertCallbackObj => (
+          <View style={styles.parent}>
+            <Animated.View
+              style={[
+                styles.alert,
+                { scaleX: this.scaleX, scaleY: this.scaleY },
+              ]}
+            >
+              <View style={styles.alertTextView}>
+                <Text style={styles.alertTitle}>{title}</Text>
+                <Text style={styles.alertText}>{text}</Text>
+              </View>
+              <TouchableOpacity
+                style={styles.button}
+                onPress={_ => this.hide(alertCallbackObj)}
+                activeOpacity={0.4}
+              >
+                <Text style={styles.buttonText}>Ok</Text>
+              </TouchableOpacity>
+            </Animated.View>
           </View>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => this.hide(navigation.goBack)}
-            activeOpacity={0.4}
-          >
-            <Text style={styles.buttonText}>Ok</Text>
-          </TouchableOpacity>
-        </Animated.View>
-        {/* <View style={{ ...StyleSheet.absoluteFillObject }}>
-          {this.props.children}
-        </View> */}
-      </View>
+        )}
+      </AlertBoxCallbackContext.Consumer>
     );
   }
 }
@@ -108,19 +98,32 @@ const styles = StyleSheet.create({
   },
   alert: {
     ...StyleSheet.absoluteFillObject,
-    left: 100,
-    right: 100,
+    left: 90,
+    right: 90,
     top: 300,
     bottom: 300,
     backgroundColor: 'white',
     borderRadius: 15,
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     alignItems: 'center',
     paddingVertical: 16,
     elevation: 5,
   },
+  alertTextView: {
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 8,
+  },
+  alertTitle: {
+    fontFamily: 'poppins_semibold',
+    fontSize: 24,
+    color: '#2196f3',
+    textAlign: 'center',
+  },
+  alertText: {
+    fontFamily: 'poppins_regular',
+  },
   button: {
-    marginBottom: 20,
     backgroundColor: '#2196f3',
     borderRadius: 15,
     paddingHorizontal: 24,

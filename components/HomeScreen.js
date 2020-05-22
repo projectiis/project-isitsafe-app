@@ -18,22 +18,34 @@ import Header from './Header';
 import AlertBox from './AlertBox';
 import mapStyle from '../map.json';
 
-const Home = ({ navigation, initialRegion, places }) => {
-  let textInput,
-    inputActive = false,
-    map,
-    carousel,
-    markers = [];
+class Home extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: undefined,
+      loading: true,
+      shouldShowSearchBar: true,
+      places: [],
+      inputActive: false,
+      markers: [],
+    };
 
-  const [user, setUser] = useState();
-  const [loading, setLoading] = useState(true);
+    this.onAuthStateChanged = this.onAuthStateChanged.bind(this);
+    this.getPlacesFromQuery = this.getPlacesFromQuery.bind(this);
+  }
+  // let textInput,
+  //   searchBar,
+  //   inputActive = false,
+  //   map,
+  //   carousel,
+  //   markers = [];
 
-  const onAuthStateChanged = user => {
-    if (user) setUser(user);
-    if (loading) setLoading(false);
+  onAuthStateChanged = user => {
+    if (user) this.setState({ user });
+    if (this.state.loading) this.setState({ loading: false });
   };
 
-  const renderCarouselItem = ({
+  renderCarouselItem = ({
     item: { name, address, placeId, placeType, phoneNumber, openingHours },
   }) => {
     return (
@@ -66,15 +78,15 @@ const Home = ({ navigation, initialRegion, places }) => {
           activeOpacity={0.4}
           onPress={() => {
             if (user)
-              navigation.navigate('RatingScreen', {
+              this.props.navigation.navigate('RatingScreen', {
                 placeId,
                 placeType,
                 uid: user.uid,
               });
             else
-              navigation.navigate('AlertBox', {
-                title: 'You are not signed in',
-                text: 'You need to sing in order to rate this place',
+              this.props.navigation.navigate('AlertBox', {
+                title: 'Unauthorized',
+                text: 'You must be signed in in order to rate this place',
               });
           }}
         >
@@ -84,88 +96,109 @@ const Home = ({ navigation, initialRegion, places }) => {
     );
   };
 
-  useEffect(() => {
-    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+  getPlacesFromQuery = input => {
+    fetch('http://localhost:5000')
+      .then(res => {
+        if (res.ok) return res.json();
+      })
+      .then(jsonResponse => {
+        if (jsonResponse.status === 'ok') {
+          this.setState({ places: jsonResponse.places });
+          searchBar.hide(() => this.setState({ shouldShowSearchBar: false }));
+        } else {
+        }
+      })
+      .catch(err => console.log(err));
+  };
 
-    return subscriber;
-  }, []);
+  componentDidMount() {
+    this.subscriber = auth().onAuthStateChanged(this.onAuthStateChanged);
+  }
 
-  return loading ? null : (
-    <View style={styles.home}>
-      <MapView
-        style={styles.map}
-        ref={ref => (map = ref)}
-        onTouchStart={() => {
-          if (inputActive) {
-            if (textInput) textInput.blur();
-            inputActive = false;
-          }
-        }}
-        customMapStyle={mapStyle}
-        initialRegion={initialRegion}
-        onMapReady={() => {
-          map.animateCamera({
-            center: {
-              latitude: places[0].coords.lat,
-              longitude: places[0].coords.lng,
-            },
-          });
-          markers[0].showCallout();
-          carousel.snapToItem(0);
-        }}
-        toolbarEnabled={false}
-      >
-        {places.map((place, i) => {
-          return (
-            <Marker
-              ref={ref => markers.push(ref)}
-              key={place.placeId}
-              coordinate={{
-                latitude: place.coords.lat,
-                longitude: place.coords.lng,
-              }}
-              title={place.name}
-              onPress={() => carousel.snapToItem(i)}
-            />
-          );
-        })}
-      </MapView>
-      {/* <View style={styles.overlay}>
-        <Header navigation={navigation} />
-        <SearchBar
-          getReference={ref => {
-            textInput = ref;
-            inputActive = true;
+  componentDidUpdate() {
+    console.log('updated');
+  }
+
+  componentWillUnmount() {
+    this.subscriber();
+  }
+
+  render() {
+    const { markers, places, loading } = this.state;
+    const { navigation, initialRegion } = this.props;
+
+    return loading ? null : (
+      <View style={styles.home}>
+        <MapView
+          style={styles.map}
+          ref={ref => (this.map = ref)}
+          // onTouchStart={() => {
+          //   if (inputActive) {
+          //     if (this.textInput) this.textInput.blur();
+          //     this.setState({ inputActive: false });
+          //   }
+          //   this.searchBar.blur();
+          // }}
+          customMapStyle={mapStyle}
+          initialRegion={initialRegion}
+          onMapReady={() => {
+            if (places.length > 0) {
+              this.map.animateCamera({
+                center: {
+                  latitude: places[0].coords.lat,
+                  longitude: places[0].coords.lng,
+                },
+              });
+              markers[0].showCallout();
+              this.carousel.snapToItem(0);
+            }
           }}
-        />
-      </View> */}
-      <View style={styles.overlay}>
-        <Header navigation={navigation} />
-        <Carousel
-          ref={ref => (carousel = ref)}
-          data={places}
-          renderItem={renderCarouselItem}
-          sliderWidth={Dimensions.get('window').width}
-          itemWidth={300}
-          containerCustomStyle={styles.carousel}
-          contentContainerCustomStyle={{
-            alignItems: 'flex-end',
-          }}
-          enableMomentum={true}
-          onSnapToItem={index => {
-            map.animateCamera({
-              center: {
-                latitude: places[index].coords.lat,
-                longitude: places[index].coords.lng,
-              },
-            });
-            markers[index].showCallout();
-          }}
-        />
+          toolbarEnabled={false}
+        >
+          {places.length > 0 &&
+            places.map((place, i) => {
+              return (
+                <Marker
+                  ref={ref => this.setState({ markers: [...markers, ref] })}
+                  key={place.placeId}
+                  coordinate={{
+                    latitude: place.coords.lat,
+                    longitude: place.coords.lng,
+                  }}
+                  title={place.name}
+                  onPress={() => carousel.snapToItem(i)}
+                />
+              );
+            })}
+        </MapView>
+        <View style={styles.overlay}>
+          <Header navigation={navigation} />
+          <Carousel
+            ref={ref => (this.carousel = ref)}
+            data={places}
+            renderItem={this.renderCarouselItem}
+            sliderWidth={Dimensions.get('window').width}
+            itemWidth={300}
+            containerCustomStyle={styles.carousel}
+            contentContainerCustomStyle={{
+              alignItems: 'flex-end',
+            }}
+            enableMomentum={true}
+            onSnapToItem={index => {
+              this.map.animateCamera({
+                center: {
+                  latitude: places[index].coords.lat,
+                  longitude: places[index].coords.lng,
+                },
+              });
+              markers[index].showCallout();
+            }}
+          />
+        </View>
       </View>
-    </View>
-  );
-};
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   home: {

@@ -2,6 +2,8 @@ import React, { Component, useRef } from 'react';
 import { View, ActivityIndicator, StyleSheet } from 'react-native';
 import Animated, { Easing } from 'react-native-reanimated';
 
+import SpinnerCallbackContext from './SpinnerCallbackContext';
+
 const {
   Value,
   Clock,
@@ -55,24 +57,39 @@ export default class extends Component {
     super(props);
     this.scaleX = new Value(0);
     this.scaleY = new Value(0);
-
-    this.state = {
-      shown: false,
-    };
   }
 
-  loadingStarted() {
-    const config = {
-      duration: 200,
-      toValue: 1,
-      easing: Easing.inOut(Easing.ease),
-    };
+  static contextType = SpinnerCallbackContext;
 
-    this.setState({ shown: true });
+  componentDidMount() {
+    this.props.navigation.addListener('focus', () => {
+      const config = {
+        duration: 200,
+        toValue: 1,
+        easing: Easing.inOut(Easing.ease),
+      };
 
-    timing(this.scaleX, config).start();
-    timing(this.scaleY, config).start();
+      timing(this.scaleX, config).start();
+      timing(this.scaleY, config).start();
+    });
+
+    this.props.navigation.addListener('blur', () => {
+      const config = {
+        duration: 200,
+        toValue: 1,
+        easing: Easing.inOut(Easing.ease),
+      };
+
+      timing(this.scaleX, config).start();
+      timing(this.scaleY, config).start();
+    });
+    // console.log('updated');
+    // this.context.spinnerCallback();
   }
+
+  componentDidUpdate() {}
+
+  loadingStarted() {}
 
   loadingFinished(callback) {
     const config = {
@@ -82,25 +99,17 @@ export default class extends Component {
     };
 
     timing(this.scaleX, config).start();
-    timing(this.scaleY, config).start(() => {
-      this.setState({ shown: false });
-      callback();
-    });
+    timing(this.scaleY, config).start(navigation.goBack);
   }
 
   render() {
     return (
       <View style={styles.parent}>
-        {this.state.shown ? (
-          <Animated.View
-            style={[
-              styles.spinner,
-              { scaleX: this.scaleX, scaleY: this.scaleY },
-            ]}
-          >
-            <ActivityIndicator size='large' color='#2196f3' />
-          </Animated.View>
-        ) : null}
+        <Animated.View
+          style={[styles.spinner, { scaleX: this.scaleX, scaleY: this.scaleY }]}
+        >
+          <ActivityIndicator size='large' color='#2196f3' />
+        </Animated.View>
         {/* <View style={{ ...StyleSheet.absoluteFillObject }}>
           {this.props.children}
         </View> */}
