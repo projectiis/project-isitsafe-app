@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { View, PermissionsAndroid, StyleSheet } from 'react-native';
+import React, { Component } from 'react';
+import { View, PermissionsAndroid, StyleSheet, StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createStore } from 'redux';
@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import Geolocation from '@react-native-community/geolocation';
 
 // Screens
+import SplashScreen from './components/SplashScreen';
 import HomeScreen from './components/HomeScreen';
 import AuthScreen from './components/AuthScreen';
 import RatingScreen from './components/RatingScreen';
@@ -25,14 +26,21 @@ console.disableYellowBox = true;
 
 const Stack = createStackNavigator();
 
-let store;
+export default class extends Component {
+  splash;
+  store;
 
-export default () => {
-  // TODO: loading should be true
-  const [loading, setLoading] = useState(true);
-  const [initialRegion, setInitialRegion] = useState();
+  constructor(props) {
+    super(props);
+    this.state = {
+      loading: true,
+      initialRegion: undefined,
+    };
 
-  const getLocation = () => {
+    this.getNearbyPlaces = this.getNearbyPlaces.bind(this);
+  }
+
+  getLocation = () => {
     return new Promise((resolve, reject) => {
       PermissionsAndroid.check(
         PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
@@ -68,124 +76,112 @@ export default () => {
     });
   };
 
-  const getNearbyPlaces = coords => {
-    fetch(
-      'https://europe-west3-isitsafe-276523.cloudfunctions.net/getPlaceDetails',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          location: {
-            latitude: coords.latitude,
-            longitude: coords.longitude,
-          },
-          placeTypes: ['restaurant'],
-        }),
+  getNearbyPlaces = coords => {
+    fetch('http://localhost:5000/placeDetails', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
       },
-    )
+      body: JSON.stringify({
+        location: {
+          latitude: coords.latitude,
+          longitude: coords.longitude,
+        },
+        placeTypes: ['restaurant'],
+      }),
+    })
       .then(res => {
         if (res.ok) return res.json();
       })
       .then(jsonResponse => {
         if (jsonResponse.status === 'ok') {
-          store = createStore(reducer, {
+          this.store = createStore(reducer, {
             ratings: [],
             places: jsonResponse.places,
           });
 
-          store.subscribe(() =>
+          this.store.subscribe(() =>
             console.log(JSON.stringify(store.getState(), null, 2)),
           );
 
-          setInitialRegion({
-            latitude: coords.latitude,
-            longitude: coords.longitude,
-            latitudeDelta: 0.005,
-            longitudeDelta: 0.005,
+          this.setState({
+            initialRegion: {
+              latitude: coords.latitude,
+              longitude: coords.longitude,
+              latitudeDelta: 0.005,
+              longitudeDelta: 0.005,
+            },
           });
-          setLoading(false);
+
+          this.splash.loadingFinished(() => this.setState({ loading: false }));
         }
       })
       .catch(err => console.log('Network error: ', err));
   };
 
-  useEffect(() => {
-    // getLocation()
-    //   .then(getNearbyPlaces)
-    //   .catch(console.log);
+  componentDidMount() {
+    this.getLocation()
+      .then(this.getNearbyPlaces)
+      .catch(err => console.log(err));
+  }
 
-    store = createStore(reducer, {
-      ratings: [],
-      places: getPlaceDetailsResponse.places,
-    });
+  render() {
+    const { loading, initialRegion } = this.state;
 
-    setLoading(false);
-
-    // store.subscribe(() =>
-    //   console.log(JSON.stringify(store.getState(), null, 2)),
-    // );
-  }, []);
-
-  const alertBoxCallback = {
-    alertCallback: () => {},
-    set callback(new_callback = () => {}) {
-      this.alertCallback = new_callback;
-    },
-  };
-
-  const spinnerCallback = {
-    spinnerCallback: () => {},
-    set callback(new_callback = () => {}) {
-      this.spinnerCallback = new_callback;
-    },
-  };
-
-  return loading ? null : (
-    <AlertBoxCallbackContext.Provider value={alertBoxCallback}>
-      <SpinnerCallbackContext.Provider value={spinnerCallback}>
-        <Provider store={store}>
-          <NavigationContainer>
-            <Stack.Navigator
-              initialRouteName='HomeScreen'
-              screenOptions={{
-                headerShown: false,
+    return loading ? (
+      <View style={{ ...StyleSheet.absoluteFillObject }}>
+        <StatusBar
+          animated={true}
+          backgroundColor={'#2196f3'}
+          barStyle={'dark-content'}
+        />
+        <SplashScreen ref={ref => (this.splash = ref)} />
+      </View>
+    ) : (
+      <Provider store={this.store}>
+        <StatusBar
+          animated={true}
+          backgroundColor={'#dfeaf3'}
+          barStyle={'dark-content'}
+        />
+        <NavigationContainer>
+          <Stack.Navigator
+            initialRouteName='HomeScreen'
+            screenOptions={{
+              headerShown: false,
+            }}
+          >
+            <Stack.Screen name='HomeScreen'>
+              {props => <HomeScreen {...props} initialRegion={initialRegion} />}
+            </Stack.Screen>
+            <Stack.Screen name='AuthScreen' component={AuthScreen} />
+            <Stack.Screen
+              name='RatingScreen'
+              component={RatingScreen}
+              options={{
+                cardStyle: { backgroundColor: 'transparent' },
+                cardOverlayEnabled: false,
               }}
-            >
-              <Stack.Screen name='HomeScreen'>
-                {props => (
-                  <HomeScreen {...props} initialRegion={initialRegion} />
-                )}
-              </Stack.Screen>
-              <Stack.Screen name='AuthScreen' component={AuthScreen} />
-              <Stack.Screen
-                name='RatingScreen'
-                component={RatingScreen}
-                options={{
-                  cardOverlayEnabled: false,
-                }}
-              />
-              <Stack.Screen
-                name='AlertBox'
-                component={AlertBox}
-                options={{
-                  cardStyle: { backgroundColor: 'transparent' },
-                  cardOverlayEnabled: false,
-                }}
-              />
-              <Stack.Screen
-                name='Spinner'
-                component={Spinner}
-                options={{
-                  cardStyle: { backgroundColor: 'transparent' },
-                  cardOverlayEnabled: false,
-                }}
-              />
-            </Stack.Navigator>
-          </NavigationContainer>
-        </Provider>
-      </SpinnerCallbackContext.Provider>
-    </AlertBoxCallbackContext.Provider>
-  );
-};
+            />
+            <Stack.Screen
+              name='AlertBox'
+              component={AlertBox}
+              options={{
+                cardStyle: { backgroundColor: 'transparent' },
+                cardOverlayEnabled: false,
+              }}
+            />
+            <Stack.Screen
+              name='Spinner'
+              component={Spinner}
+              options={{
+                cardStyle: { backgroundColor: 'transparent' },
+                cardOverlayEnabled: false,
+              }}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </Provider>
+    );
+  }
+}

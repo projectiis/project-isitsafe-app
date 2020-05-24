@@ -1,391 +1,172 @@
-import React, { useState, useEffect } from 'react';
+import React, { Component } from 'react';
 import {
   View,
   Text,
-  TextInput,
   TouchableOpacity,
-  FlatList,
   StyleSheet,
+  Dimensions,
 } from 'react-native';
+import Carousel from 'react-native-snap-carousel';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import AlertBox from './AlertBox';
-import Spinner from './Spinner';
-
-import getPlaceRatingResponse from '../responses/getPlaceRatingResponse.json';
-
-import AlertBoxCallbackContext from './AlertBoxCallbackContext';
-import SpinnerCallbackContext from './SpinnerCallbackContext';
-
-const ListItem = ({ name, defaultValue, maxValue, onValueChange }) => {
-  const [value, setValue] = useState(Math.round(defaultValue / 25));
-  console.log(maxValue, value);
-
-  const twoOptions = (
-    <View style={styles.listItem}>
-      <Text>{name}</Text>
-      <View style={styles.listItemOptionsView}>
-        <TouchableOpacity
-          style={
-            defaultValue === 1
-              ? styles.listItemOptionActive
-              : styles.listItemOptionInactive
-          }
-          onPress={() => {
-            onValueChange(1);
-            setValue(1);
-          }}
-        >
-          <Text>Yes</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={
-            defaultValue === 0
-              ? styles.listItemOptionActive
-              : styles.listItemOptionInactive
-          }
-          onPress={() => {
-            onValueChange(0);
-            setValue(0);
-          }}
-        >
-          <Text>No</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
-  );
-
-  const fiveOptions = (
-    <View style={styles.listItem}>
-      <Text>{name}</Text>
-      <View style={styles.listItemOptionsView}>
-        <TouchableOpacity
-          style={
-            defaultValue === 0
-              ? styles.listItemOptionActive
-              : styles.listItemOptionInactive
-          }
-          onPress={() => {
-            onValueChange(0);
-            setValue(0);
-          }}
-        >
-          <Text>0</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={
-            defaultValue === 1
-              ? styles.listItemOptionActive
-              : styles.listItemOptionInactive
-          }
-          onPress={() => {
-            onValueChange(1);
-            setValue(1);
-          }}
-        >
-          <Text>1</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={
-            defaultValue === 2
-              ? styles.listItemOptionActive
-              : styles.listItemOptionInactive
-          }
-          onPress={() => {
-            onValueChange(2);
-            setValue(2);
-          }}
-        >
-          <Text>2</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={
-            defaultValue === 3
-              ? styles.listItemOptionActive
-              : styles.listItemOptionInactive
-          }
-          onPress={() => {
-            onValueChange(3);
-            setValue(3);
-          }}
-        >
-          <Text>3</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={
-            defaultValue === 4
-              ? styles.listItemOptionActive
-              : styles.listItemOptionInactive
-          }
-          onPress={() => {
-            onValueChange(4);
-            setValue(4);
-          }}
-        >
-          <Text>4</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
-  );
-
-  return maxValue === 1 ? twoOptions : fiveOptions;
-};
-
-export default ({
-  navigation,
-  route: {
-    params: { placeId, placeType, uid },
-  },
-}) => {
-  let tmpRules = [];
-
-  for (let rule in getPlaceRatingResponse.placeRating.rules) {
-    tmpRules.push({
-      name: rule,
-      defaultValue: Math.round(
-        getPlaceRatingResponse.placeRating.rules[rule] /
-          (100 / getPlaceRatingResponse.ratingSchema[rule]),
-      ),
-      maxValue: getPlaceRatingResponse.ratingSchema[rule],
-    });
+class CarouselItem extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      answer: '',
+    };
   }
 
-  const [rules, setRules] = useState(tmpRules);
-  const [loading, setLoading] = useState(false);
-  const [ratingSchema, setRatingSchema] = useState(
-    getPlaceRatingResponse.ratingSchema,
-  );
-  const [newRules, setNewRules] = useState(rules);
+  render() {
+    const { id, placeName, name, onAnswerChanged } = this.props;
 
-  // const getPlaceRating = () => {
-  //   fetch(
-  //     `https://europe-west3-isitsafe-276523.cloudfunctions.net/getPlaceRating?placeId=${placeId}&placeType=${placeType}`,
-  //   )
-  //     .then(res => {
-  //       if (res.ok) return res.json();
-  //     })
-  //     .then(
-  //       jsonResponse => {
-  //         console.log('jsonResponse: ', jsonResponse);
-  //         const placeRating = jsonResponse.placeRating;
-  //         const ratingSchema = jsonResponse.ratingSchema;
+    return (
+      <View style={styles.carouselItem}>
+        <View style={styles.carouselItemHeader}>
+          <Text style={styles.placeName}>{placeName}</Text>
+          <Text style={styles.ruleName}>{name}</Text>
+        </View>
+        <View style={styles.carouselItemFooter}>
+          <View style={styles.buttonView}>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => onAnswerChanged(id)}
+            >
+              <Icon name={'done'} size={24} color={'#2196f3'} />
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.unsureButton}
+              onPress={() => onAnswerChanged(id)}
+            >
+              <Text style={styles.unsureText}>ΔΕΝ ΓΝΩΡΙΖΩ</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => onAnswerChanged(id)}
+            >
+              <Icon name={'clear'} size={24} color={'#2196f3'} />
+            </TouchableOpacity>
+          </View>
+        </View>
+      </View>
+    );
+  }
+}
 
-  //         if (jsonResponse.status === 'ok') {
-  //           let rules = [];
+export default class extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loading: true,
+      rules: [],
+    };
 
-  //           for (let rule in placeRating.rules) {
-  //             rules.push({
-  //               name: rule,
-  //               value: placeRating.rules[rule],
-  //               maxValue: ratingSchema[rule],
-  //             });
-  //           }
+    this.answerChanged = this.answerChanged.bind(this);
+  }
 
-  //           setRules(rules);
-  //           setRatingSchema(jsonResponse.ratingSchema);
-  //           setLoading(false);
-  //         } else navigation.goBack();
-  //       },
-  //       err => console.log('Another error: ', err),
-  //     )
-  //     .catch(err => {
-  //       console.log('Network error: ', err);
-  //       navigation.goBack();
-  //     });
-  // };
+  answerChanged(id) {
+    if (id < 2) this.carousel.snapToItem(id + 1);
+    else this.props.navigation.goBack();
+  }
 
-  const submitRating = (alertCallbackObj, spinnerCallbackObj) => {
-    navigation.navigate('Spinner');
-
-    let rulesObj = {};
-    for (rule of newRules) rulesObj[rule.name] = rule.defaultValue;
-    fetch('https://europe-west3-isitsafe-276523.cloudfunctions.net/addRating', {
-      method: 'POST',
-      headers: {
-        Authorization: uid,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ placeId, placeType, rules: rulesObj }),
-    })
-      .then(res => {
-        if (res.ok) return res.json();
-      })
+  componentDidMount() {
+    fetch(`http://localhost:5000/getPlaceRulesSchema`)
+      .then(res => res.json())
       .then(jsonResponse => {
-        if (jsonResponse.status === 'ok') {
-          navigation.goBack();
-          navigation.goBack();
-        } else if (jsonResponse.status === 'unauthorized') {
-          navigation.goBack();
+        let rulesFromResponse = jsonResponse.rules;
 
-          alertCallbackObj.alertCallback = navigation => {
-            navigation.goBack();
-            navigation.goBack();
-          };
+        rulesFromResponse.sort((a, b) => a.id - b.id);
 
-          console.log('unautorized');
-          navigation.navigate('AlertBox', {
-            title: 'Unauthorized',
-            text: 'You must be signed in in order to rate this place',
-          });
-        } else if (
-          jsonResponse.status.includes('error') ||
-          jsonResponse.status === 'invalid_rating'
-        ) {
-          navigation.goBack();
-
-          alertCallbackObj.alertCallback = navigation => {
-            navigation.goBack();
-            navigation.goBack();
-          };
-
-          console.log('invalid_rating');
-          navigation.navigate('AlertBox', {
-            title: 'Oops',
-            text:
-              'An error occurred while we were processing your score for this place',
-          });
-        } else if (jsonResponse.status === 'invalid_place_type') {
-          navigation.goBack();
-
-          alertCallbackObj.alertCallback = navigation => {
-            navigation.goBack();
-            navigation.goBack();
-          };
-
-          console.log('invalid_place_type');
-          navigation.navigate('AlertBox', {
-            title: 'Invalid place type',
-            text:
-              'We thought that you could rate this place, but unfortunately you cannot',
-          });
-        }
+        this.setState({ rules: rulesFromResponse, loading: false });
       })
-      .catch(err => {
-        navigation.goBack();
+      .catch(_ =>
+        console.log(
+          `Network error while getting the place rules schema for placeType: ${
+            this.props.placeType
+          }`,
+        ),
+      );
+  }
 
-        alertCallbackObj.alertCallback = navigation => {
-          navigation.goBack();
-          navigation.goBack();
-        };
-
-        console.log('error on catch');
-        navigation.navigate('AlertBox', {
-          title: 'Oops',
-          text:
-            'An error occurred while we were processing your score for this place',
-        });
-      });
-  };
-
-  return (
-    <AlertBoxCallbackContext.Consumer>
-      {alertCallbackObj => (
-        <SpinnerCallbackContext.Consumer>
-          {spinnerCallbackObj => (
-            <View style={styles.ratingScreen}>
-              <Text style={styles.headerText}>
-                {'Help us determine\nthe safety of this place'}
-              </Text>
-              <FlatList
-                style={styles.flatList}
-                data={rules}
-                renderItem={({ item, index }) => (
-                  <ListItem
-                    {...item}
-                    onValueChange={newValue => {
-                      let tmpNewRules = Array.from(newRules);
-                      tmpNewRules[index].defaultValue = newValue;
-
-                      setNewRules(tmpNewRules);
-                      console.log(newValue, tmpNewRules);
-                    }}
-                  />
-                )}
-                keyExtractor={(_, i) => i.toString()}
-              />
-              <TouchableOpacity
-                style={styles.button}
-                activeOpacity={0.4}
-                onPress={() =>
-                  submitRating(alertCallbackObj, spinnerCallbackObj)
-                }
-              >
-                <Text style={styles.buttonText}>Submit</Text>
-              </TouchableOpacity>
-            </View>
+  render() {
+    return this.state.loading ? null : (
+      <View style={styles.parent}>
+        <Carousel
+          ref={ref => (this.carousel = ref)}
+          data={this.state.rules}
+          renderItem={({ item }) => (
+            <CarouselItem
+              {...item}
+              placeName={this.props.route.params.placeName}
+              onAnswerChanged={this.answerChanged}
+            />
           )}
-        </SpinnerCallbackContext.Consumer>
-      )}
-    </AlertBoxCallbackContext.Consumer>
-  );
-};
+          sliderWidth={Dimensions.get('window').width}
+          itemWidth={300}
+          itemHeight={200}
+          containerCustomStyle={styles.carousel}
+          scrollEnabled={false}
+        />
+      </View>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
-  ratingScreen: {
+  parent: {
     ...StyleSheet.absoluteFillObject,
+  },
+  carousel: {
+    position: 'absolute',
+    top: 0.5 * Dimensions.get('window').height - 100,
+  },
+  carouselItem: {
     justifyContent: 'space-between',
+    backgroundColor: '#2196f3',
+    borderRadius: 10,
+  },
+  carouselItemHeader: {
+    height: 100,
+    justifyContent: 'space-evenly',
     alignItems: 'center',
-    backgroundColor: '#f5f5f5',
-  },
-  headerText: {
-    alignSelf: 'flex-start',
-    color: '#2196f3',
-    fontFamily: 'poppins_semibold',
-    fontSize: 25,
-    marginTop: 32,
-    marginLeft: 16,
-  },
-  flatList: {
-    alignSelf: 'stretch',
-    backgroundColor: '#fff',
-    marginHorizontal: 32,
-    marginTop: 16,
-    marginBottom: 16,
+    backgroundColor: 'white',
     borderRadius: 10,
     elevation: 5,
   },
-  listItem: {
-    justifyContent: 'space-between',
-    alignItems: 'flex-start',
-    marginTop: 16,
-    paddingHorizontal: 20,
+  carouselItemFooter: {
+    height: 80,
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
   },
-  listItemOptionsView: {
-    alignSelf: 'stretch',
+  placeName: {
+    fontFamily: 'poppins_regular',
+    fontSize: 14,
+  },
+  ruleName: {
+    marginLeft: 8,
+    color: '#2196f3',
+    fontWeight: 'bold',
+    fontSize: 16,
+  },
+  buttonView: {
+    width: '100%',
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     alignItems: 'center',
-    marginTop: 16,
-  },
-  listItemOptionInactive: {
-    borderColor: '#cbc9c9',
-    borderWidth: 1,
-    borderRadius: 5,
-    paddingHorizontal: 8,
-    paddingVertical: 2,
-  },
-  listItemOptionActive: {
-    backgroundColor: '#cbc9c9',
-    borderColor: 'transparent',
-    borderWidth: 1,
-    borderRadius: 5,
-    paddingHorizontal: 8,
-    paddingVertical: 2,
-  },
-  itemText: {
-    fontFamily: 'poppins_regular',
-    fontSize: 16,
   },
   button: {
-    marginBottom: 20,
-    backgroundColor: '#2196f3',
-    borderRadius: 15,
-    paddingHorizontal: 24,
-    paddingTop: 8,
-    paddingBottom: 5,
+    padding: 4,
+    backgroundColor: 'white',
+    borderRadius: 100,
+    elevation: 3,
   },
-  buttonText: {
-    color: '#f5f5f5',
-    fontFamily: 'poppins_regular',
-    fontSize: 15,
+  unsureButton: {
+    // marginRight: 16,
+    // alignSelf: 'flex-end',
+  },
+  unsureText: {
+    color: 'white',
+    fontWeight: 'bold',
+    fontFamily: 'didact_gothic',
   },
 });

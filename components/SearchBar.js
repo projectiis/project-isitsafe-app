@@ -4,13 +4,16 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
+  TouchableWithoutFeedback,
   StyleSheet,
 } from 'react-native';
-import Animated, { Easing, call } from 'react-native-reanimated';
+import Animated, { Easing } from 'react-native-reanimated';
 
 const { Value, timing } = Animated;
 
 export default class extends Component {
+  textInput;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -19,17 +22,11 @@ export default class extends Component {
     };
 
     this.translateY = new Value(0);
+    this.blur = this.blur.bind(this);
   }
 
-  hide(callback) {
-    this.textInput.blur();
-    const config = {
-      duration: 200,
-      toValue: 20,
-      easing: Easing.inOut(Easing.ease),
-    };
-
-    timing(this.translateY, config).start(callback);
+  componentDidUpdate() {
+    if (this.state.focused === true) this.textInput.focus();
   }
 
   blur() {
@@ -38,44 +35,36 @@ export default class extends Component {
 
   render() {
     const { focused } = this.state;
-    const { getReference } = this.props;
 
     return this.state.focused ? (
       <View style={styles.active}>
         <TextInput
-          ref={ref => {
-            this.textInput = ref;
-            // getReference(ref);
-          }}
+          ref={ref => (this.textInput = ref)}
           style={styles.textInputActive}
           placeholder='Type here'
           onChangeText={value => this.setState({ text: value })}
-          onFocus={() => focused || this.setState({ focused: true })}
           onBlur={() => focused && this.setState({ focused: false })}
         />
         <View style={styles.buttonView}>
           <View style={styles.hairLine} />
           <TouchableOpacity
-            onPress={() => this.props.onSearch(this.state.text)}
+            onPress={() => {
+              this.blur();
+              this.props.onSearch(this.state.text);
+            }}
           >
             <Text style={styles.button}>Search</Text>
           </TouchableOpacity>
         </View>
       </View>
     ) : (
-      <Animated.View
-        style={[
-          styles.inactive,
-          { transform: [{ translateY: this.translateY }] },
-        ]}
-      >
-        <TextInput
-          style={styles.textInputInactive}
-          placeholder='Type here'
-          onChangeText={value => this.setState({ text: value })}
-          onFocus={() => focused || this.setState({ focused: true })}
-        />
-      </Animated.View>
+      <View style={styles.inactive}>
+        <TouchableWithoutFeedback
+          onPress={() => this.setState({ focused: true })}
+        >
+          <Text style={styles.textInputInactive}>Type here</Text>
+        </TouchableWithoutFeedback>
+      </View>
     );
   }
 }
@@ -85,9 +74,9 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     marginRight: 20,
     marginBottom: 25,
-    paddingLeft: 16,
-    paddingRight: 16,
-    backgroundColor: '#ffffff',
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    backgroundColor: '#fff',
     borderRadius: 25,
     elevation: 5,
   },
@@ -96,12 +85,11 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignContent: 'center',
     alignItems: 'center',
-    marginLeft: 20,
-    marginRight: 20,
+    marginHorizontal: 20,
     marginBottom: 25,
     paddingLeft: 16,
     paddingRight: 24,
-    backgroundColor: '#ffffff',
+    backgroundColor: '#fff',
     borderRadius: 25,
     elevation: 5,
   },

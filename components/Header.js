@@ -11,10 +11,11 @@ export default class extends Component {
     this.state = {
       user: undefined,
       initializing: true,
-      shouldShowBackButton: true,
-      visible: true,
+      shouldShowBackButton: false,
     };
     this.onAuthStateChanged = this.onAuthStateChanged.bind(this);
+    this.showBackButton = this.showBackButton.bind(this);
+    this.hideBackButton = this.hideBackButton.bind(this);
   }
 
   componentDidMount() {
@@ -33,6 +34,14 @@ export default class extends Component {
     if (this.state.initializing) this.setState({ initializing: false });
   };
 
+  showBackButton() {
+    this.setState({ shouldShowBackButton: true });
+  }
+
+  hideBackButton() {
+    this.setState({ shouldShowBackButton: false });
+  }
+
   render() {
     const { initializing, user, shouldShowBackButton } = this.state;
 
@@ -41,7 +50,12 @@ export default class extends Component {
     return user ? (
       <View style={styles.header}>
         {shouldShowBackButton ? (
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              this.setState({ shouldShowBackButton: false });
+              this.props.onBackPressed();
+            }}
+          >
             <Icon
               style={{
                 backgroundColor: 'white',
@@ -53,7 +67,9 @@ export default class extends Component {
               size={32}
             />
           </TouchableOpacity>
-        ) : null}
+        ) : (
+          <View />
+        )}
         <Image
           style={styles.img}
           source={{ uri: user.photoURL }}
@@ -62,11 +78,32 @@ export default class extends Component {
       </View>
     ) : (
       <View style={styles.header}>
+        {shouldShowBackButton ? (
+          <TouchableOpacity
+            onPress={() => {
+              this.setState({ shouldShowBackButton: false });
+              this.props.onBackPressed();
+            }}
+          >
+            <Icon
+              style={{
+                backgroundColor: 'white',
+                borderRadius: 100,
+                padding: 5,
+              }}
+              name='arrow-back'
+              color='#2196f3'
+              size={32}
+            />
+          </TouchableOpacity>
+        ) : (
+          <View />
+        )}
         <TouchableOpacity
           onPress={() => this.props.navigation.navigate('AuthScreen')}
         >
           <View style={styles.img}>
-            <Avatar width={35} height={35} />
+            <Avatar color={'#2196f3'} width={35} height={35} />
           </View>
         </TouchableOpacity>
       </View>
@@ -87,9 +124,11 @@ const styles = StyleSheet.create({
     borderRadius: 100,
   },
   img: {
+    justifyContent: 'center',
+    alignItems: 'center',
     width: 50,
     height: 50,
     borderRadius: 100,
-    elevation: 5,
+    backgroundColor: 'white',
   },
 });
