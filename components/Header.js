@@ -11,7 +11,7 @@ export default class extends Component {
     this.state = {
       user: undefined,
       initializing: true,
-      shouldShowBackButton: false,
+      shouldShowBackButton: true,
     };
     this.onAuthStateChanged = this.onAuthStateChanged.bind(this);
     this.showBackButton = this.showBackButton.bind(this);

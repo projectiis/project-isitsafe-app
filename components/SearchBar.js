@@ -7,9 +7,6 @@ import {
   TouchableWithoutFeedback,
   StyleSheet,
 } from 'react-native';
-import Animated, { Easing } from 'react-native-reanimated';
-
-const { Value, timing } = Animated;
 
 export default class extends Component {
   textInput;
@@ -20,8 +17,6 @@ export default class extends Component {
       focused: false,
       text: '',
     };
-
-    this.translateY = new Value(0);
     this.blur = this.blur.bind(this);
   }
 

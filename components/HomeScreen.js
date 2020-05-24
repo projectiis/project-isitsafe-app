@@ -10,7 +10,6 @@ import { connect } from 'react-redux';
 import MapView, { Marker } from 'react-native-maps';
 import Carousel from 'react-native-snap-carousel';
 import auth from '@react-native-firebase/auth';
-import Animated, { Easing } from 'react-native-reanimated';
 
 import SearchBar from './SearchBar';
 import Header from './Header';
@@ -18,8 +17,6 @@ import AlertBox from './AlertBox';
 import RatingBar from './RatingBar';
 
 import mapStyle from '../map.json';
-
-const { Value, timing } = Animated;
 
 class Home extends Component {
   map;
@@ -38,9 +35,6 @@ class Home extends Component {
       inputActive: false,
       animatedCarousel: true,
     };
-
-    this.searchBarMarginBottom = new Value(0);
-    this.carouselMarginBottom = new Value(-250);
 
     this.onAuthStateChanged = this.onAuthStateChanged.bind(this);
     this.renderCarouselItem = this.renderCarouselItem.bind(this);
@@ -67,7 +61,7 @@ class Home extends Component {
               paddingVertical: 2,
             }}
           >
-            Sponsored
+            Verified owner
           </Text>
           <Text style={styles.carouselItemName}>{name}</Text>
           <Text style={styles.carouselItemAddress}>{address}</Text>
@@ -109,7 +103,9 @@ class Home extends Component {
 
   componentDidMount() {
     this.unsubscribe = auth().onAuthStateChanged(this.onAuthStateChanged);
-    this.setState({ places: this.props.places });
+    if (this.props.places.length > 0) {
+      this.setState({ shouldShowSearchBar: false, places: this.props.places });
+    }
   }
 
   componentDidUpdate() {
@@ -141,49 +137,17 @@ class Home extends Component {
             },
           });
 
-          const config = {
-            duration: 400,
-            toValue: -75,
-            easing: Easing.inOut(Easing.ease),
-          };
+          this.setState({ shouldShowSearchBar: false });
+          this.carousel.snapToItem(this.state.places.length - 1);
 
-          timing(this.searchBarMarginBottom, config).start(({ finished }) => {
-            if (finished) {
-              this.setState({ shouldShowSearchBar: false });
-              config.toValue = 0;
-              timing(this.carouselMarginBottom, config).start(
-                ({ finished }) => {
-                  if (finished) {
-                    this.header.showBackButton();
-                    this.setState({ animatedCarousel: false });
-                  }
-                },
-              );
-            }
-          });
+          this.header.showBackButton();
         }
       })
       .catch(_ => `Network error on getPlaceFromQuery?input=${input}`);
   }
 
   onBackPressed() {
-    const config = {
-      duration: 400,
-      toValue: -250,
-      easing: Easing.inOut(Easing.ease),
-    };
-
-    this.setState({ animatedCarousel: true });
-
-    timing(this.carouselMarginBottom, config).start(({ finished }) => {
-      if (finished) {
-        this.header.hideBackButton();
-        this.searchBarMarginBottom = new Value(-75);
-        this.setState({ shouldShowSearchBar: true });
-        config.toValue = 0;
-        timing(this.searchBarMarginBottom, config).start();
-      }
-    });
+    this.setState({ shouldShowSearchBar: true });
   }
 
   render() {
@@ -218,6 +182,7 @@ class Home extends Component {
           toolbarEnabled={false}
         >
           {places.length > 0 &&
+            !shouldShowSearchBar &&
             places.map((place, i) => {
               console.log(this.markers.length);
               return (
@@ -251,12 +216,10 @@ class Home extends Component {
         {shouldShowSearchBar ? (
           <View style={[styles.overlay]}>
             <Header navigation={navigation} />
-            <Animated.View style={{ marginBottom: this.searchBarMarginBottom }}>
-              <SearchBar
-                ref={ref => (this.searchBar = ref)}
-                onSearch={this.onSearch}
-              />
-            </Animated.View>
+            <SearchBar
+              ref={ref => (this.searchBar = ref)}
+              onSearch={this.onSearch}
+            />
           </View>
         ) : (
           <View style={styles.overlay}>
@@ -265,55 +228,27 @@ class Home extends Component {
               navigation={navigation}
               onBackPressed={this.onBackPressed}
             />
-            {animatedCarousel ? (
-              <Animated.View
-                style={{ marginBottom: this.carouselMarginBottom }}
-              >
-                <Carousel
-                  // ref={ref => (this.carousel = ref)}
-                  data={places}
-                  renderItem={this.renderCarouselItem}
-                  sliderWidth={Dimensions.get('window').width}
-                  itemWidth={300}
-                  containerCustomStyle={styles.carousel}
-                  contentContainerCustomStyle={{
-                    alignItems: 'flex-end',
-                  }}
-                  enableMomentum={true}
-                  onSnapToItem={index => {
-                    this.map.animateCamera({
-                      center: {
-                        latitude: places[index].coords.lat,
-                        longitude: places[index].coords.lng,
-                      },
-                    });
-                    this.markers[index].showCallout();
-                  }}
-                />
-              </Animated.View>
-            ) : (
-              <Carousel
-                ref={ref => (this.carousel = ref)}
-                data={places}
-                renderItem={this.renderCarouselItem}
-                sliderWidth={Dimensions.get('window').width}
-                itemWidth={300}
-                containerCustomStyle={styles.carousel}
-                contentContainerCustomStyle={{
-                  alignItems: 'flex-end',
-                }}
-                enableMomentum={true}
-                onSnapToItem={index => {
-                  this.map.animateCamera({
-                    center: {
-                      latitude: places[index].coords.lat,
-                      longitude: places[index].coords.lng,
-                    },
-                  });
-                  this.markers[index].showCallout();
-                }}
-              />
-            )}
+            <Carousel
+              ref={ref => (this.carousel = ref)}
+              data={places}
+              renderItem={this.renderCarouselItem}
+              sliderWidth={Dimensions.get('window').width}
+              itemWidth={300}
+              containerCustomStyle={styles.carousel}
+              contentContainerCustomStyle={{
+                alignItems: 'flex-end',
+              }}
+              enableMomentum={true}
+              onSnapToItem={index => {
+                this.map.animateCamera({
+                  center: {
+                    latitude: places[index].coords.lat,
+                    longitude: places[index].coords.lng,
+                  },
+                });
+                this.markers[index].showCallout();
+              }}
+            />
           </View>
         )}
       </View>
